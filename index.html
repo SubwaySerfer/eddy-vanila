@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EDDY - Sea Kayaking Adventures</title>
+
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Alexandria:wght@300;400;500&family=Archivo+Black:wght@400&family=Unbounded:wght@900&display=swap"
+    rel="stylesheet">
+
+  <!-- Leaflet CSS for maps -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+  <!-- Custom CSS files -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+</head>
+
+<body>
+  <!-- Header Start -->
+  <header class="eddy-header" id="eddyHeader">
+    <!-- Desktop Header Wrapper -->
+    <div class="eddy-header__desktop-wrapper" id="desktopHeader">
+      <div class="eddy-header__wrapper" id="header__logo-link">
+        <a href="/" id="logo" class="eddy-logo-link">
+          <img src="/images/icons/logo_def_L.svg" alt="EDDY Logo" class="eddy-logo-img" />
+        </a>
+
+        <div class="eddy-header__bottom">
+          <nav class="eddy-main-nav" id="mainMenu">
+            <ul class="eddy-main-nav__list">
+              <li class="eddy-main-nav__item">
+                <a href="/adventures" class="eddy-main-nav__link">Adventures</a>
+              </li>
+              <li class="eddy-main-nav__item">
+                <a href="/rentals" class="eddy-main-nav__link">Rental</a>
+              </li>
+              <li class="eddy-main-nav__item">
+                <a href="/sea-kayaking" class="eddy-main-nav__link">Sea kayaking</a>
+              </li>
+              <li class="eddy-main-nav__item">
+                <a href="/market" class="eddy-main-nav__link">Market</a>
+              </li>
+              <li class="eddy-main-nav__item">
+                <a href="/gift-certificates" class="eddy-main-nav__link">Gift Certificates</a>
+              </li>
+              <li class="eddy-main-nav__item">
+                <a href="/journal" class="eddy-main-nav__link">Journal</a>
+              </li>
+              <li class="eddy-main-nav__item">
+                <a href="#" class="eddy-main-nav__link" id="contactsLink">Contacts</a>
+              </li>
+              <li class="eddy-main-nav__item">
+                <div class="eddy-header-location">
+                  <img src="/images/icons/tabIcon.svg" alt="location" class="eddy-location-icon" />
+                  <div class="eddy-custom-dropdown" id="locationDropdown">
+                    <div class="eddy-dropdown-trigger" id="dropdownTrigger">
+                      <span class="eddy-location-text" id="selectedLocation">BUDVA</span>
+                      <img src="/images/icons/arrow-dwn.svg" alt="arrow down" class="eddy-dropdown-arrow" />
+                    </div>
+                    <div class="eddy-dropdown-menu" id="dropdownMenu">
+                      <div class="eddy-dropdown-option" data-location="budva">Budva</div>
+                      <div class="eddy-dropdown-option" data-location="skadar">Skadar</div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile/Compact Navbar -->
+    <div class="eddy-navbar" id="mobileNavbar">
+      <div class="eddy-navbar__inner">
+        <a href="/" class="eddy-navbar__logo-link">
+          <img src="/images/icons/logo_def_L.svg" alt="EDDY Logo" class="eddy-navbar__logo" />
+        </a>
+
+        <nav class="eddy-navbar__menu" id="navbarMenu">
+          <a href="/adventures" class="eddy-navbar__link">ADVENTURES</a>
+          <a href="/rentals" class="eddy-navbar__link">RENTALS</a>
+          <a href="/sea-kayaking" class="eddy-navbar__link">SEA KAYAKING</a>
+          <a href="/market" class="eddy-navbar__link">MARKET</a>
+          <a href="/journal" class="eddy-navbar__link">JOURNAL</a>
+          <span class="eddy-navbar__link" id="moreMenuTrigger">MORE</span>
+        </nav>
+
+        <div class="eddy-navbar__location eddy-custom-dropdown">
+          <img src="/images/icons/tabIcon.svg" alt="location" class="eddy-navbar__location-icon" />
+          <div class="eddy-navbar__dropdown-wrapper">
+            <div class="eddy-dropdown-trigger" id="navbarDropdownTrigger">
+              <span id="navbarSelectedLocation">BUDVA</span>
+              <img src="/images/icons/arrow-dwn.svg" alt="arrow down" />
+            </div>
+            <div class="eddy-dropdown-menu" id="navbarDropdownMenu">
+              <div class="eddy-dropdown-option" data-location="budva">Budva</div>
+              <div class="eddy-dropdown-option" data-location="skadar">Skadar</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="eddy-navbar__controls">
+          <button class="eddy-navbar__toggle" id="contactsBtn" aria-label="Open contacts">
+            <img src="/images/icons/tabIcon.svg" alt="location" class="eddy-navbar__mobile-contact-icon" />
+          </button>
+
+          <button class="eddy-navbar__toggle" id="mobileMenuBtn" aria-label="Open menu">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect y="2" width="22" height="2" fill="white" />
+              <rect y="10" width="22" height="2" fill="white" />
+              <rect y="18" width="22" height="2" fill="white" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Overlay Menu -->
+    <div class="eddy-navbar__overlay" id="mobileOverlay">
+      <button class="eddy-navbar__close" id="closeOverlay">✕</button>
+      <ul class="eddy-navbar__overlay-menu">
+        <li><a href="/adventures">ADVENTURES</a></li>
+        <li><a href="/rentals">RENTALS</a></li>
+        <li><a href="/sea-kayaking">SEA KAYAKING</a></li>
+        <li><a href="/market">MARKET</a></li>
+        <li><a href="/gift-certificates">GIFT CERTIFICATES</a></li>
+        <li><a href="/corporate-tours">CORPORATE TOURS</a></li>
+        <li><span id="overlayContactsLink">CONTACTS</span></li>
+        <li><a href="/about">ABOUT</a></li>
+      </ul>
+
+      <div class="eddy-navbar__overlay-socials">
+        <a href="https://instagram.com/eddy_community" target="_blank" rel="noopener noreferrer">
+          <img src="/images/icons/instanavbar.svg" alt="Instagram" />
+        </a>
+        <a href="https://t.me/eddy_community" target="_blank" rel="noopener noreferrer">
+          <img src="/images/icons/teleganav.svg" alt="Telegram" />
+        </a>
+      </div>
+    </div>
+  </header>
+  <!-- Header end -->
+
+  <!-- Hero Section -->
+  <section class="eddy-hero">
+    <div class="eddy-hero__img">
+      <img src="/images/main/hero.png" alt="Sea kayaking" class="eddy-hero__background-image" />
+    </div>
+  </section>
+
+  <!-- SEA KAYAKING -->
+  <section>
+    <a href="/sea-kayaking" class="eddy-hero__link">
+      <div class="eddy-hero__content">
+        <h1 class="eddy-hero__title">SEA KAYAKING</h1>
+        <picture class="eddy-hero__coming-soon">
+          <source srcset="/images/icons/coming-soon-mobile.svg" media="(max-width: 767px)" />
+          <img src="/images/main/coming-soon.svg" alt="Coming Soon" />
+        </picture>
+      </div>
+    </a>
+  </section>
+
+  <!-- NavCards Section -->
+  <section class="eddy-nav-cards">
+    <ul class="eddy-nav-cards__list">
+      <li class="eddy-nav-cards__item">
+        <a href="/adventures" class="eddy-card-square eddy-card-square--tours">
+          <div class="eddy-card-square__inner">
+            <h3 class="eddy-card-square__title">Regular Tours</h3>
+            <p class="eddy-card-square__desc">
+              Budva Riviera and Skadar Lake National Park
+            </p>
+            <div class="eddy-card-square__go-to">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
+                <path
+                  d="M14 0C21.732 0 28 6.26801 28 14C28 21.732 21.732 28 14 28C6.26801 28 0 21.732 0 14C0 6.26801 6.26801 0 14 0ZM14 2C7.37258 2 2 7.37258 2 14C2 20.6274 7.37258 26 14 26C20.6274 26 26 20.6274 26 14C26 7.37258 20.6274 2 14 2ZM20 9.80371L20.0215 9.8252L20 9.8457V18H17.4189V12.4268L9.50195 20.3438L7.67773 18.5195L15.6152 10.5811H10V8H20V9.80371Z"
+                  fill="white" />
+              </svg>
+            </div>
+          </div>
+        </a>
+      </li>
+
+      <li class="eddy-nav-cards__item">
+        <a href="/market" class="eddy-card-square eddy-card-square--market">
+          <div class="eddy-card-square__inner">
+            <h3 class="eddy-card-square__title">Market</h3>
+            <p class="eddy-card-square__desc">
+              Rent kayaks and equipment for your own adventure
+            </p>
+            <div class="eddy-card-square__go-to">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
+                <path
+                  d="M14 0C21.732 0 28 6.26801 28 14C28 21.732 21.732 28 14 28C6.26801 28 0 21.732 0 14C0 6.26801 6.26801 0 14 0ZM14 2C7.37258 2 2 7.37258 2 14C2 20.6274 7.37258 26 14 26C20.6274 26 26 20.6274 26 14C26 7.37258 20.6274 2 14 2ZM20 9.80371L20.0215 9.8252L20 9.8457V18H17.4189V12.4268L9.50195 20.3438L7.67773 18.5195L15.6152 10.5811H10V8H20V9.80371Z"
+                  fill="white" />
+              </svg>
+            </div>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Rental Section -->
+  <section class="eddy-home-rental eddy-container">
+    <div class="eddy-home-container">
+      <div class="eddy-home-rental__wrapper">
+        <h2 class="eddy-home-rental__title eddy-visually-hidden">Rental</h2>
+
+        <a href="/rentals" class="eddy-home-rental__logo">
+          <img src="/images/icons/Rental.svg" alt="Rental Logo" width="400" height="137" />
+        </a>
+
+        <ul class="eddy-home-rental__list">
+          <li>
+            <a href="/rentals" class="eddy-home-rental-card-item">
+              <div class="eddy-home-rental-card-item__img">
+                <img src="/images/rental/kayak_orca-base.png" alt="double kayaks" width="380" height="190"
+                  class="eddy-home-rental-card-item__image" />
+              </div>
+              <h3 class="eddy-home-rental-card-item__title eddy-pt-top">double kayaks</h3>
+            </a>
+          </li>
+          <li>
+            <a href="/rentals" class="eddy-home-rental-card-item">
+              <div class="eddy-home-rental-card-item__img">
+                <img src="/images/rental/kayak_mid-way.png" alt="Single kayaks" width="380" height="190"
+                  class="eddy-home-rental-card-item__image" />
+              </div>
+              <h3 class="eddy-home-rental-card-item__title">Single kayaks</h3>
+            </a>
+          </li>
+          <li>
+            <a href="/rentals" class="eddy-home-rental-card-item">
+              <div class="eddy-home-rental-card-item__img">
+                <img src="/images/rental/board-gladiatorPro10'6.png" alt="paddle boards" width="380" height="190"
+                  class="eddy-home-rental-card-item__image" />
+              </div>
+              <h3 class="eddy-home-rental-card-item__title eddy-pt-top">paddle boards</h3>
+            </a>
+          </li>
+        </ul>
+
+        <a href="/rentals" class="eddy-home-rental__link">
+          <button class="eddy-home-btn eddy-home-btn--rental eddy-home-rental__btn" type="button">
+            See All Options
+          </button>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tours Section -->
+  <section class="eddy-tours eddy-container">
+    <div class="eddy-tours__wrapper">
+      <a href="/adventures">
+        <h2 class="eddy-tours__title">Regular Water Adventures</h2>
+      </a>
+
+      <ul class="eddy-tours__list">
+        <li class="eddy-tours__item">
+          <a class="eddy-tour-card eddy-tour-card-sv-nikola" href="#">
+            <h3 class="eddy-tour-card__title">Sveti Nikola Island</h3>
+            <p class="eddy-tour-card__description">
+              Explore Sveti Nikola Island with a hidden grotto, wild beach
+              snorkeling, and an optional summit hike for stunning sea
+              views.
+            </p>
+          </a>
+        </li>
+
+        <li class="eddy-tours__item">
+          <a class="eddy-tour-card eddy-tour-card-kamenik" href="#">
+            <h3 class="eddy-tour-card__title">KAMENIK ISLE</h3>
+            <p class="eddy-tour-card__description">
+              Four-hour tour on the waters of the Skadar Lake National
+              Reserve.
+            </p>
+          </a>
+        </li>
+
+        <li class="eddy-tours__item">
+          <a class="eddy-tour-card eddy-tour-card-moraca" href="#">
+            <h3 class="eddy-tour-card__title">VRANJINA ISLAND</h3>
+            <p class="eddy-tour-card__description">
+              Four-hour guided tour around Vranjina Island with access to
+              Skadar Lake.
+            </p>
+          </a>
+        </li>
+
+        <li class="eddy-tours__item">
+          <a class="eddy-tour-card eddy-tour-card-caves" href="#">
+            <h3 class="eddy-tour-card__title">coastal caves</h3>
+            <p class="eddy-tour-card__description">
+              Three-hour tour to the coastal caves of the Budva Riviera.
+              We'll see Budva's Old Town and dive from the cliffs.
+            </p>
+          </a>
+        </li>
+      </ul>
+
+      <a href="/adventures">
+        <button class="eddy-btn eddy-btn--blue eddy-tours__button" type="button">
+          <span class="eddy-hidden eddy-sm-inline">All Adventures</span>
+          <span class="eddy-sm-hidden">All Tours</span>
+        </button>
+      </a>
+    </div>
+  </section>
+
+  <!-- Journal Section -->
+  <section class="eddy-journal eddy-container">
+    <div class="eddy-journal__wrapper">
+      <h2 class="eddy-visually-hidden">Journal</h2>
+
+      <a href="/journal">
+        <img src="/images/icons/journal.svg" alt="Journal" width="414" height="138" class="eddy-journal__title-icon" />
+      </a>
+
+      <ul class="eddy-journal__list">
+        <li class="eddy-journal-card">
+          <a href="#">
+            <div class="eddy-journal-card__image-wrapper">
+              <img src="/images/journal/journal-1.png" alt="Kayak and tent by the sea" width="360" height="203" />
+            </div>
+            <h3 class="eddy-journal-card__title">Coming Soon</h3>
+            <p class="eddy-journal-card__text">Coming Soon.</p>
+          </a>
+        </li>
+
+        <li class="eddy-journal-card">
+          <a href="#">
+            <div class="eddy-journal-card__image-wrapper">
+              <img src="/images/journal/journal-2.png" alt="Kayak in a cove" width="360" height="203" />
+            </div>
+            <h3 class="eddy-journal-card__title">Coming Soon</h3>
+            <p class="eddy-journal-card__text">Coming Soon</p>
+          </a>
+        </li>
+
+        <li class="eddy-journal-card">
+          <a href="#">
+            <div class="eddy-journal-card__image-wrapper">
+              <img src="/images/journal/journal-3.png" alt="Shoes on the shore" width="360" height="203" />
+            </div>
+            <h3 class="eddy-journal-card__title">Coming Soon</h3>
+            <p class="eddy-journal-card__text">Coming Soon</p>
+          </a>
+        </li>
+      </ul>
+
+      <a href="/journal" class="eddy-journal-button">
+        All Articles
+      </a>
+    </div>
+  </section>
+
+  <!-- Corporate Section -->
+  <section class="eddy-corporate">
+    <!-- Modal Overlay (hidden by default) -->
+    <div class="eddy-modal__overlay" id="modalOverlay">
+      <div class="eddy-modal">
+        <p class="eddy-modal__text">
+          Thank you for reaching out! <br />
+          We will get back to you shortly.
+        </p>
+        <button class="eddy-modal__button" id="modalCloseBtn">
+          OK
+        </button>
+      </div>
+    </div>
+
+    <div class="eddy-corporate__wrapper">
+      <h2 class="eddy-corporate__title eddy-container">CORPORATE ADVENTURES</h2>
+      <p class="eddy-corporate__description eddy-container">
+        We can organize the best water adventure for your team: speed and
+        endurance races, exploring wild beaches and bays with panoramic
+        views, and a barbecue by the water.
+        <br />
+        Enter your contacts, and we'll get in touch.
+      </p>
+
+      <form class="eddy-corporate__form" id="corporateForm">
+        <div class="eddy-custom-input">
+          <label class="eddy-custom-input__label" for="name">Name</label>
+          <input class="eddy-custom-input__field" type="text" id="name" name="name" placeholder="Your name" required />
+        </div>
+
+        <div class="eddy-custom-input">
+          <label class="eddy-custom-input__label" for="mail">Email</label>
+          <input class="eddy-custom-input__field" type="email" id="mail" name="mail" placeholder="your@email.com"
+            required />
+        </div>
+
+        <div class="eddy-custom-input">
+          <label class="eddy-custom-input__label" for="phone">Phone</label>
+          <input class="eddy-custom-input__field" type="tel" id="phone" name="phone" placeholder="+1 234 567 8900"
+            required />
+        </div>
+
+        <button class="eddy-corporate__button" type="submit">
+          Send
+        </button>
+      </form>
+
+      <p class="eddy-corporate__privacy">
+        By submitting this form you agree to our
+        <a href="/privacy" class="eddy-corporate__privacy-link">Privacy Policy</a>
+        and
+        <a href="/terms" class="eddy-corporate__privacy-link">Terms of Service</a>.
+      </p>
+    </div>
+
+    <!-- Mobile Version -->
+    <div class="eddy-corporate-mob">
+      <h2 class="eddy-corporate-mob__title-mob">CORPORATE ADVENTURES</h2>
+      <p class="eddy-corporate-mob__description-mob">
+        We can organize the best water adventure for your team: speed and
+        endurance races, exploring wild beaches and bays with panoramic
+        views, and a barbecue by the water.
+        <br />
+        Enter your contacts, and we'll get in touch.
+      </p>
+
+      <form class="eddy-corporate-mob__form-mob" id="corporateFormMob">
+        <div class="eddy-custom-input">
+          <label class="eddy-custom-input__label" for="nameMob">Name</label>
+          <input class="eddy-custom-input__field" type="text" id="nameMob" name="name" placeholder="Your name"
+            required />
+        </div>
+
+        <div class="eddy-custom-input">
+          <label class="eddy-custom-input__label" for="mailMob">Email</label>
+          <input class="eddy-custom-input__field" type="email" id="mailMob" name="mail" placeholder="your@email.com"
+            required />
+        </div>
+
+        <div class="eddy-custom-input">
+          <label class="eddy-custom-input__label" for="phoneMob">Phone</label>
+          <input class="eddy-custom-input__field" type="tel" id="phoneMob" name="phone" placeholder="+1 234 567 8900"
+            required />
+        </div>
+
+        <button class="eddy-corporate-mob__button-mob" type="submit">
+          Send
+        </button>
+      </form>
+
+      <p class="eddy-corporate-mob__privacy-mob">
+        By submitting this form you agree to our
+        <a href="/privacy" class="eddy-corporate__privacy-link">Privacy Policy</a>
+        and
+        <a href="/terms" class="eddy-corporate__privacy-link">Terms of Service</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- Reviews Section -->
+  <div class="eddy-slider">
+    <h2 class="eddy-slider__title">
+      What people say about <br class="hide-mobile" />
+      EDDY tours
+    </h2>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Inter', sans-serif;
+        background: #f5f5f5;
+        padding: 50px 20px;
+      }
+
+      /* Reviews Section Styles */
+      .eddy-slider {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 60px 0;
+      }
+
+      .eddy-slider__title {
+        text-align: center;
+        font-size: 48px;
+        font-weight: 400;
+        margin-bottom: 60px;
+        text-transform: uppercase;
+        letter-spacing: 4.8px;
+      }
+
+      /* Swiper Styles */
+      .reviews-swiper {
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+      }
+
+      .swiper-wrapper {
+        align-items: stretch;
+      }
+
+      .swiper-slide {
+        width: 100% !important;
+        flex-shrink: 0 !important;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* Review Card Styles */
+      .review-card {
+        background: white;
+        border-radius: 16px;
+        padding: 32px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        max-width: 800px;
+        width: 100%;
+      }
+
+      .review-card__avatar {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 24px;
+        font-weight: 600;
+        font-size: 18px;
+      }
+
+      .review-card__avatar img {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      .review-card__text {
+        font-size: 16px;
+        line-height: 1.6;
+        color: #333;
+        margin-bottom: 24px;
+      }
+
+      .review-card__footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .review-card__stars {
+        display: flex;
+        gap: 4px;
+      }
+
+      .review-card__stars img {
+        width: 20px;
+        height: 20px;
+      }
+
+      .review-card__link {
+        color: #007bff;
+        text-decoration: none;
+        font-size: 14px;
+      }
+
+      .review-card__link:hover {
+        text-decoration: underline;
+      }
+
+      /* Swiper Navigation */
+      .swiper-button-next,
+      .swiper-button-prev {
+        color: #000 !important;
+        background: white;
+        width: 50px !important;
+        height: 50px !important;
+        border-radius: 50%;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        margin-top: -25px !important;
+      }
+
+      .swiper-button-next:after,
+      .swiper-button-prev:after {
+        font-size: 20px !important;
+        font-weight: bold;
+      }
+
+      /* Review us section */
+      .eddy-reviewus {
+        text-align: center;
+        margin-top: 40px;
+        font-size: 14px;
+        color: #666;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+      }
+
+      .eddy-google,
+      .eddy-reviewtrip {
+        height: 20px;
+      }
+
+      @media (max-width: 768px) {
+        .eddy-slider__title {
+          font-size: 28px;
+          letter-spacing: 2.8px;
+        }
+
+        .review-card {
+          padding: 24px;
+        }
+
+        .swiper-button-next,
+        .swiper-button-prev {
+          display: none !important;
+        }
+      }
+    </style>
+    <!-- Swiper -->
+    <div class="swiper reviews-swiper">
+      <div class="swiper-wrapper">
+        <!-- Review 1 -->
+        <div class="swiper-slide">
+          <div class="review-card">
+            <div class="review-card__avatar">
+              <img src="/images/reviews/martin.png" alt="Marcin Bitel" />
+              Marcin Bitel
+            </div>
+            <div class="review-card__content">
+              <p class="review-card__text">
+                Stepan was our guide for this kayaking tour around Old Budva and to the cliffs and caves beyond, and he
+                was both patient and fun. We had a lovely experience, with the added bonus of loads of photos and videos
+                that Stepan kindly sent us afterwards. Would recommend to anybody fit enough to paddle!
+              </p>
+              <div class="review-card__footer">
+                <div class="review-card__stars">
+                  <img src="/images/icons/review-star.svg" alt="Star" />
+                  <img src="/images/icons/review-star.svg" alt="Star" />
+                  <img src="/images/icons/review-star.svg" alt="Star" />
+                  <img src="/images/icons/review-star.svg" alt="Star" />
+                  <img src="/images/icons/review-star.svg" alt="Star" />
+                </div>
+                <a href="https://maps.app.goo.gl/imcFSw7c8h35LhXj6" class="review-card__link" target="_blank"
+                  rel="noopener noreferrer">
+                  View on Google Maps
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="swiper-slide">
+          <div class="review-card">
+            <div class="review-card__avatar">
+              <img src="/images/reviews/joan.svg" alt="Joanna Prince" />
+              Joanna Prince
+            </div>
+            <div class="review-card__content">
+              <p class="review-card__text">
+                My family of nine all enjoyed this kayak rental and tour. The guides were helpful, knowledgeable, and
+                great at showing us the best spots. They led us into caves and to a secluded, quiet beach. This
+                experience was a highlight of our trip.
+              </p>
+              <div class="review-card__footer">
+                <div class="review-card__stars">
+                  <img src="/images/icons/review-star.svg" alt="Star" />
+                  <img src="/images/icons/review-star.svg" alt="Star" />
+                  <img src="/images/icons/review-star.svg" alt="Star" />
+                  <img src="/images/icons/review-star.svg" alt="Star" />
+                  <img src="/images/icons/review-star.svg" alt="Star" />
+                </div>
+                <a href="https://maps.app.goo.gl/8KPpyyS9rcwkVFKv8" class="review-card__link" target="_blank"
+                  rel="noopener noreferrer">
+                  View on Google Maps
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="swiper-slide">
+          <div class="review-card">
+            <div class="review-card__avatar">
+              <img src="/images/reviews/yang.svg" alt="Canran Yang" />
+              Canran Yang
+            </div>
+            <div class="review-card__content">
+              <p class="review-card__text">
+                This is the best tour I've ever been on! The instructor was very patient and also skilled at taking
+                photos and videos. It was my first time trying SUP, but with his guidance, it felt easy. The views were
+                incredible—I highly recommend Pigeon Cave, where the sea is crystal clear and completely free of
+                tourists!
+              </p>
+              <div class="review-card__footer">
+                <div class="review-card__stars">
+                  <img src="/images/icons/review-star.svg" alt="Star" />
+                  <img src="/images/icons/review-star.svg" alt="Star" />
+                  <img src="/images/icons/review-star.svg" alt="Star" />
+                  <img src="/images/icons/review-star.svg" alt="Star" />
+                  <img src="/images/icons/review-star.svg" alt="Star" />
+                </div>
+                <a href="https://maps.app.goo.gl/AQ5Hn6E1ufxDEHm29" class="review-card__link" target="_blank"
+                  rel="noopener noreferrer">
+                  View on Google Maps
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 4 -->
+        <div class="swiper-slide">
+          <div class="review-card">
+            <div class="review-card__avatar">
+              <img src="/images/reviews/may.svg" alt="Кateryna" />
+              Кateryna
+            </div>
+            <div class="review-card__content">
+              <p class="review-card__text">
+                Today, I had my first-ever kayaking experience on Lake Skadar, and I absolutely loved it! Instructor
+                Kirill explained all the essential water safety tips in a clear and accessible way, making the
+                experience even more enjoyable. It was simply wonderful — I highly recommend it!
+              </p>
+              <div class="review-card__footer">
+                <div class="review-card__stars">
+                  <img src="/images/icons/review-star.svg" alt="Star" />
+                  <img src="/images/icons/review-star.svg" alt="Star" />
+                  <img src="/images/icons/review-star.svg" alt="Star" />
+                  <img src="/images/icons/review-star.svg" alt="Star" />
+                  <img src="/images/icons/review-star.svg" alt="Star" />
+                </div>
+                <a href="https://maps.app.goo.gl/gnGxQG5oEoj5mK3E7" class="review-card__link" target="_blank"
+                  rel="noopener noreferrer">
+                  View on Google Maps
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 5 -->
+        <div class="swiper-slide">
+          <div class="review-card">
+            <div class="review-card__avatar">
+              <img src="/images/reviews/abby.svg" alt="Abby Park" />
+              Abby Park
+            </div>
+            <div class="review-card__content">
+              <p class="review-card__text">
+                Stepan was an amazing tour guide! He shared lots of interesting information about the local sights and
+                captured plenty of photos and videos, allowing us to fully enjoy the experience. The views were
+                absolutely stunning, and we loved taking a break to go snorkeling in one of the coves. Highly recommend
+                this tour to anyone visiting Budva!
+              </p>
+              <div class="review-card__footer">
+                <div class="review-card__stars">
+                  <img src="/images/icons/review-star.svg" alt="Star" />
+                  <img src="/images/icons/review-star.svg" alt="Star" />
+                  <img src="/images/icons/review-star.svg" alt="Star" />
+                  <img src="/images/icons/review-star.svg" alt="Star" />
+                  <img src="/images/icons/review-star.svg" alt="Star" />
+                </div>
+                <a href="https://maps.app.goo.gl/yZx1TeMCZVpHyfJ76" class="review-card__link" target="_blank"
+                  rel="noopener noreferrer">
+                  View on Google Maps
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation buttons -->
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+
+    <div class="eddy-reviewus">
+      Review us on
+      <a href="https://g.page/r/CSmGHMb13JqIEAE/review" target="_blank" rel="noopener noreferrer">
+        <img src="/images/icons/google.svg" alt="google.svg" class="eddy-google" />
+      </a>
+      or
+      <a href="https://www.tripadvisor.com/UserReviewEdit-g304074-d12877654-SUP_Kayaking_Tours-Budva_Budva_Municipality.html"
+        target="_blank" rel="noopener noreferrer">
+        <img src="/images/reviews/reviewtrip.svg" alt="reviewtrip.svg" class="eddy-reviewtrip" />
+      </a>
+    </div>
+  </div>
+
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <!-- Initialize Swiper -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Проверяем существование элемента
+      const swiperContainer = document.querySelector('.reviews-swiper');
+      if (!swiperContainer) {
+        console.error('Swiper container not found');
+        return;
+      }
+
+      // Уничтожаем существующий экземпляр, если есть
+      if (swiperContainer.swiper) {
+        swiperContainer.swiper.destroy(true, true);
+      }
+
+      // Создаем новый экземпляр
+      const swiper = new Swiper('.reviews-swiper', {
+        slidesPerView: 1,
+        spaceBetween: 0,
+        loop: true,
+
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+
+        // Обработчик ошибок
+        on: {
+          init: function () {
+            console.log('Swiper initialized successfully');
+          },
+          slideChange: function () {
+            console.log('Slide changed to:', this.activeIndex);
+          }
+        }
+      });
+    });
+  </script>
+  </div>
+
+  <!-- Contact Tabs Section -->
+  <section class="eddy-contact-tabs">
+    <div class="eddy-contact-tabs__tabs">
+      <div class="eddy-contact-tabs__wrapper">
+        <button class="eddy-contact-tabs__tab" id="skadarTab" data-tab="skadar">
+          SKADAR
+        </button>
+        <button class="eddy-contact-tabs__tab active" id="budvaTab" data-tab="budva">
+          <span class="eddy-icon-location">
+            <img src="/images/icons/tabIcon.svg" alt="budva" />
+          </span>
+          BUDVA
+        </button>
+      </div>
+    </div>
+
+    <div class="eddy-contact-tabs__content">
+      <div class="eddy-contact-tabs__map">
+        <div class="eddy-map-wrap">
+          <div id="eddyMap" class="eddy-map"></div>
+        </div>
+      </div>
+
+      <div class="eddy-contact-tabs__info">
+        <h3>Contacts</h3>
+        <a href="tel:+38269719904" class="eddy-contact-tabs__phone" id="contactPhone">
+          +382 (69) 71-99-04
+        </a>
+        <a href="mailto:eddyletspaddle@gmail.com" class="eddy-contact-tabs__email" id="contactEmail">
+          eddyletspaddle@gmail.com
+        </a>
+        <div class="eddy-contact-tabs__address" id="contactAddress">
+          <p><strong>Rentals</strong> Azzuro Beach, Budva 85310, Montenegro</p>
+          <p><strong>Tours</strong> Slovenska Plaža, Budva 85310, Montenegro</p>
+        </div>
+        <p class="eddy-contact-tabs__hours" id="contactHours">We operate daily from 8 AM to 8 PM</p>
+
+        <div class="eddy-contact-tabs__socials">
+          <a href="https://www.facebook.com/share/1ANAhvYso1/?mibextid=wwXIfr" aria-label="Facebook" target="_blank"
+            rel="noopener noreferrer">
+            <img src="/images/icons/FB.svg" alt="Facebook" width="24" height="24" />
+          </a>
+          <a href="https://instagram.com/eddy_community" target="_blank" rel="noopener noreferrer"
+            aria-label="Instagram">
+            <img src="/images/icons/instagram.svg" alt="Instagram" width="24" height="24" />
+          </a>
+          <a href="https://wa.me/38269719904" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+            <img src="/images/icons/w-foo.svg" alt="WhatsApp" width="24" height="24" />
+          </a>
+          <a href="https://t.me/eddy_community" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+            <img src="/images/icons/telegram.svg" alt="Telegram" width="24" height="24" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer class="eddy-footer">
+    <div class="eddy-container">
+      <ul class="eddy-footer__nav">
+        <li>
+          <a href="/legal-info">Legal Information</a>
+        </li>
+        <li>
+          <a href="/corporate-tours">Corporate Adventures</a>
+        </li>
+        <li>
+          <a href="/market">Market</a>
+        </li>
+        <li>
+          <a href="#" id="contactsFooterLink">Contacts</a>
+        </li>
+      </ul>
+
+      <div class="eddy-footer__socials">
+        <a href="https://www.facebook.com/share/1ANAhvYso1/?mibextid=wwXIfr" aria-label="Facebook" target="_blank"
+          rel="noopener noreferrer">
+          <img src="/images/icons/FB.svg" alt="Facebook" width="48" height="48" />
+        </a>
+        <a href="https://instagram.com/eddy_community" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <img src="/images/icons/instagram.svg" alt="Instagram" width="48" height="48" />
+        </a>
+        <a href="https://t.me/eddy_community" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+          <img src="/images/icons/telegram.svg" alt="Telegram" width="48" height="48" />
+        </a>
+        <a href="https://www.tripadvisor.com/Attraction_Review-g304074-d12877654-Reviews-SUP_Kayaking_Tours-Budva_Budva_Municipality.html"
+          aria-label="TripAdvisor" target="_blank" rel="noopener noreferrer">
+          <img src="/images/icons/tripadvisor.svg" alt="TripAdvisor" width="48" height="48" />
+        </a>
+      </div>
+
+      <div class="eddy-footer__logo">
+        <img src="/images/icons/logo-footer.svg" alt="EDDY logo" width="120" height="92" />
+      </div>
+
+      <div class="eddy-footer__copy">
+        <p>© 2025 EDDY. All Rights Reserved.</p>
+        <a href="/privacy">Personal data processing policy</a>
+        <a href="/terms">Terms and Conditions</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Leaflet JS for maps -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- Custom JavaScript -->
+  <script src="js/main.js"></script>
+</body>
+
+</html>
