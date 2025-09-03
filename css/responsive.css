@@ -424,14 +424,7 @@
   }
 }
 
-@media (max-width: 390px) {
-  .eddy-journal {
-    padding: 4px 2px;
-  }
-  .eddy-journal-card {
-    height: 120px;
-  }
-}
+
 
 /* Corporate Responsive */
 @media (max-width: 1024px) {
