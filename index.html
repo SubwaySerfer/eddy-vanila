@@ -717,15 +717,41 @@
         .eddy-slider__title {
           font-size: 28px;
           letter-spacing: 2.8px;
+          margin-bottom: 0;
+        }
+
+        .review-card__text {
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 300;
+          line-height: 140%;
+          text-align: center;
         }
 
         .review-card {
-          padding: 24px;
+          padding: 24px 20px;
+          flex-direction: column-reverse;
+          align-items: center;
+        }
+        .review-card__avatar {
+          gap: 10px;
+        }
+
+        .review-card__content {
+          padding: 16px;
+          gap: 32px;
+          min-height: auto;
+        }
+        .review-card__footer {
+          align-self: center;
         }
 
         .swiper-button-next,
         .swiper-button-prev {
           display: none !important;
+        }
+        .eddy-reviewus {
+          margin-top: 4px;
         }
       }
     </style>
