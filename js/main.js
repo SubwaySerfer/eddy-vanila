@@ -14,9 +14,9 @@ document.addEventListener('DOMContentLoaded', function () {
   initTours();
   initJournal();
   initCorporate();
-  // Reviews now handled by slider.js
   initContactTabs();
   initFooter();
+  initChatWidget(); // Добавляем инициализацию виджета чата
 
   // Header functionality
   function initHeader() {
@@ -110,6 +110,7 @@ document.addEventListener('DOMContentLoaded', function () {
         scrollToFooter();
       });
     });
+
     function updateContactTabLocation(location) {
       // Находим соответствующую вкладку
       const targetTab = location === 'budva' ? 'budva' : 'skadar';
@@ -480,7 +481,7 @@ document.addEventListener('DOMContentLoaded', function () {
       });
 
       const customIcon = L.icon({
-        iconUrl: '/images/icons/anchor.png',
+        iconUrl: './images/icons/anchor.png',
         iconSize: [25, 30],
         iconAnchor: [12, 30],
         popupAnchor: [1, -34]
@@ -603,6 +604,181 @@ document.addEventListener('DOMContentLoaded', function () {
         this.style.transform = 'translateY(0)';
       });
     });
+  }
+
+  // Chat Widget functionality
+  function initChatWidget() {
+    // Social media data
+    const socialsData = [
+      {
+        name: "WhatsApp",
+        iconDefault: "./images/icons/w-li.svg",
+        iconHover: "./images/icons/w-dr.svg",
+        link: "https://wa.me/38269719904",
+        qrCode: "./images/icons/whatsapp-qr.svg",
+        buttonText: "Go to WhatsApp",
+        buttonIcon: "./images/icons/w-small.svg",
+        description: "Or scan this QR code to contact us on WhatsApp from your phone:"
+      },
+      {
+        name: "Telegram",
+        iconDefault: "./images/icons/tg-li.svg",
+        iconHover: "./images/icons/tg-dr.svg",
+        link: "https://t.me/eddy_community",
+        qrCode: "./images/icons/telegram-qr.svg",
+        buttonText: "Go to Telegram",
+        buttonIcon: "./images/icons/tg-small.svg",
+        description: "Or scan this QR code to contact us on Telegram from your phone:"
+      },
+      {
+        name: "Instagram",
+        iconDefault: "./images/icons/inst-li.svg",
+        iconHover: "./images/icons/inst-dr.svg",
+        link: "https://www.instagram.com/eddy_community",
+        qrCode: "./images/icons/instagram-qr.svg",
+        buttonText: "Go to Instagram",
+        buttonIcon: "./images/icons/inst-small.svg",
+        description: "Or scan this QR code to contact us on Instagram from your phone:"
+      },
+    ];
+
+    // Widget state
+    let chatIsOpen = false;
+    let chatIsClosing = false;
+    let selectedSocial = 0;
+    let chatIsMobile = window.innerWidth <= 425;
+
+    // DOM elements
+    const chatButton = document.getElementById('chatButton');
+    const chatWidget = document.getElementById('chatWidget');
+    const closeChatBtn = document.getElementById('closeChat');
+    const closeIcon = document.getElementById('closeIcon');
+    const socialItems = document.querySelectorAll('.social-item');
+    const socialLink = document.getElementById('socialLink');
+    const buttonText = document.getElementById('buttonText');
+    const buttonIcon = document.getElementById('buttonIcon');
+    const qrDescription = document.getElementById('qrDescription');
+    const qrCode = document.getElementById('qrCode');
+
+    // Handle mobile detection
+    function handleChatResize() {
+      const wasMobile = chatIsMobile;
+      chatIsMobile = window.innerWidth <= 425;
+
+      if (wasMobile !== chatIsMobile) {
+        // Update close icon for mobile
+        if (closeIcon) {
+          closeIcon.src = chatIsMobile ? './images/icons/closewid.svg' : './images/icons/krestik.svg';
+        }
+      }
+    }
+
+    // Open chat widget
+    function openChat() {
+      chatIsOpen = true;
+      if (chatWidget) {
+        chatWidget.classList.add('open');
+        chatWidget.classList.remove('closing');
+      }
+    }
+
+    // Close chat widget
+    function closeChatWidget() {
+      chatIsClosing = true;
+      if (chatWidget) {
+        chatWidget.classList.add('closing');
+        chatWidget.classList.remove('open');
+      }
+
+      setTimeout(() => {
+        chatIsOpen = false;
+        chatIsClosing = false;
+        if (chatWidget) {
+          chatWidget.classList.remove('closing');
+        }
+      }, 500);
+    }
+
+    // Update selected social media
+    function updateSelectedSocial(index) {
+      selectedSocial = index;
+      const social = socialsData[index];
+
+      // Update button
+      if (socialLink) {
+        socialLink.href = social.link;
+      }
+      if (buttonText) {
+        buttonText.textContent = social.buttonText;
+      }
+      if (buttonIcon) {
+        buttonIcon.src = social.buttonIcon;
+        buttonIcon.alt = social.name;
+      }
+
+      // Update QR code
+      if (qrDescription) {
+        qrDescription.textContent = social.description;
+      }
+      if (qrCode) {
+        qrCode.src = social.qrCode;
+        qrCode.alt = `${social.name} QR Code`;
+      }
+
+      // Update visual selection
+      socialItems.forEach((item, i) => {
+        if (i === index) {
+          item.classList.add('selected');
+        } else {
+          item.classList.remove('selected');
+        }
+      });
+    }
+
+    // Handle social item hover
+    function handleSocialHover(item, index, isHovering) {
+      const icon = item.querySelector('.icon');
+      const social = socialsData[index];
+
+      if (icon && social) {
+        if (isHovering) {
+          icon.src = social.iconHover;
+        } else {
+          icon.src = social.iconDefault;
+        }
+      }
+    }
+
+    // Event listeners
+    if (chatButton) {
+      chatButton.addEventListener('click', openChat);
+    }
+
+    if (closeChatBtn) {
+      closeChatBtn.addEventListener('click', closeChatWidget);
+    }
+
+    window.addEventListener('resize', handleChatResize);
+
+    // Social items event listeners
+    socialItems.forEach((item, index) => {
+      item.addEventListener('click', () => updateSelectedSocial(index));
+
+      item.addEventListener('mouseenter', () => {
+        handleSocialHover(item, index, true);
+      });
+
+      item.addEventListener('mouseleave', () => {
+        // Only reset if not selected
+        if (!item.classList.contains('selected')) {
+          handleSocialHover(item, index, false);
+        }
+      });
+    });
+
+    // Initialize
+    handleChatResize();
+    updateSelectedSocial(0);
   }
 
   // Utility function to scroll to footer
