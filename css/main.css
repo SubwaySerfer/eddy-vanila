@@ -447,12 +447,6 @@ p {
   object-position: center;
   display: block;
 }
-.swiper-button-prev::after {
-  background-image: url('/images/icons/arrow-left.svg');
-}
-.swiper-button-next::after {
-  background-image: url('/images/icons/arrow-right.svg');
-}
 
 .eddy-hero__img::after {
   content: '';

@@ -496,6 +496,11 @@
         width: 100%;
         height: auto;
         overflow: hidden;
+
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
       }
 
       .swiper-wrapper {
@@ -620,12 +625,6 @@
         margin-top: -25px !important;
       }
 
-      .swiper-button-next:after,
-      .swiper-button-prev:after {
-        font-size: 20px !important;
-        font-weight: bold;
-      }
-
       /* Review us section */
       .eddy-reviewus {
         text-align: center;
@@ -636,6 +635,77 @@
         align-items: center;
         justify-content: center;
         gap: 8px;
+      }
+
+      .swiper-button-next:after,
+      .swiper-button-prev:after {
+        content: none !important;
+        display: none !important;
+      }
+
+      /* Стили для кнопок навигации */
+      .swiper-button-next,
+      .swiper-button-prev {
+        color: transparent !important;
+        background: white;
+        width: 34px !important;
+        height: 34px !important;
+        border-radius: 50%;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        margin-top: -25px !important;
+
+        /* Настройки для background иконки */
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 24px 24px;
+        /* Увеличиваем размер иконки */
+
+        /* Убираем любой текст/контент */
+        font-size: 0 !important;
+        line-height: 0 !important;
+        text-indent: -9999px;
+      }
+
+      /* Кастомная стрелка влево */
+      .swiper-button-prev {
+        background-color: white;
+        background-image: url('/images/icons/arrow-left.svg');
+      }
+
+      /* Кастомная стрелка вправо */
+      .swiper-button-next {
+        background-color: white;
+        background-image: url('/images/icons/arrow-right.svg');
+      }
+
+      /* Если иконки все еще обрезаются, попробуйте увеличить размер кнопок */
+      @media (min-width: 769px) {
+
+        .swiper-button-next,
+        .swiper-button-prev {
+          width: 34px !important;
+          height: 34px !important;
+          margin-top: -30px !important;
+          background-size: 28px 28px;
+          /* Пропорционально увеличиваем иконку */
+        }
+      }
+
+      /* Hover эффекты */
+      .swiper-button-next:hover,
+      .swiper-button-prev:hover {
+        transform: scale(1.1);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+      }
+
+      /* Для мобильных устройств - скрываем кнопки */
+      @media (max-width: 768px) {
+
+        .swiper-button-next,
+        .swiper-button-prev {
+          display: none !important;
+        }
       }
 
       .eddy-google,
@@ -726,7 +796,8 @@
         <div class="swiper-slide">
           <div class="review-card">
             <div class="review-card__avatar">
-              <img src="/images/reviews/yang.svg" alt="Canran Yang" /><p>Canran Yang</p>
+              <img src="/images/reviews/yang.svg" alt="Canran Yang" />
+              <p>Canran Yang</p>
             </div>
             <div class="review-card__content">
               <p class="review-card__text">
@@ -756,7 +827,8 @@
         <div class="swiper-slide">
           <div class="review-card">
             <div class="review-card__avatar">
-              <img src="/images/reviews/may.svg" alt="Кateryna" /><p>Кateryna</p>
+              <img src="/images/reviews/may.svg" alt="Кateryna" />
+              <p>Кateryna</p>
             </div>
             <div class="review-card__content">
               <p class="review-card__text">
@@ -785,7 +857,8 @@
         <div class="swiper-slide">
           <div class="review-card">
             <div class="review-card__avatar">
-              <img src="/images/reviews/abby.svg" alt="Abby Park" /><p>Abby Park</p>
+              <img src="/images/reviews/abby.svg" alt="Abby Park" />
+              <p>Abby Park</p>
             </div>
             <div class="review-card__content">
               <p class="review-card__text">
