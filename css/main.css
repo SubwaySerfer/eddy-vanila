@@ -186,7 +186,7 @@ p {
 }
 
 .eddy-navbar__logo {
-  width: 6.5rem;
+  width: 110px;
   padding: 10px 0;
   max-width: 100%;
   height: auto;
@@ -196,8 +196,8 @@ p {
   display: flex;
   align-items: flex-end;
   gap: 24px;
-  width: 67.25rem;
-  padding-left: 2rem;
+  padding-left: 49px;
+  flex: 1;
 }
 
 .eddy-navbar__link {
@@ -685,6 +685,13 @@ p {
   line-height: 44px;
   letter-spacing: 0px;
   text-decoration: none;
+    transition: transform 0.3s ease;
+}
+.eddy-home-rental-card-item:hover {
+  transform: scale(1.055);
+}
+.eddy-home-rental-card-item-sup:hover {
+  transform: scale(1.05);
 }
 
 .eddy-pt-top {
