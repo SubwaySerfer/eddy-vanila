@@ -479,8 +479,6 @@
       /* Reviews Section Styles */
       .eddy-slider {
         max-width: 1200px;
-        margin: 0 auto;
-        padding: 60px 0;
       }
 
       .eddy-slider__title {
@@ -518,7 +516,7 @@
 
       /* Review Card Styles */
       .review-card {
-        max-width: 976px;
+        max-width: 1013px;
         width: 100%;
         display: flex;
         gap: 16px;
@@ -529,10 +527,20 @@
         display: flex;
         align-items: center;
         flex-direction: column;
-        gap: 16px;
+        gap: 10px;
         font-weight: 600;
         font-size: 18px;
         width: 140px;
+      }
+
+      .review-card__empty {
+        width: 100px;
+      }
+
+      @media(max-width: 768px) {
+        .review-card__empty {
+          display: none;
+        }
       }
 
       .review-card__avatar p {
@@ -559,10 +567,11 @@
       }
 
       .review-card__avatar img {
-        width: 60px;
-        height: 60px;
+        width: 100px;
+        height: 100px;
         border-radius: 50%;
         object-fit: cover;
+        margin-top: 10px;
       }
 
       .review-card__text {
@@ -624,18 +633,6 @@
         border-radius: 50%;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         margin-top: -25px !important;
-      }
-
-      /* Review us section */
-      .eddy-reviewus {
-        text-align: center;
-        margin-top: 40px;
-        font-size: 14px;
-        color: #666;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
       }
 
       .swiper-button-next:after,
@@ -734,15 +731,13 @@
           flex-direction: column-reverse;
           align-items: center;
         }
-        .review-card__avatar {
-          gap: 10px;
-        }
 
         .review-card__content {
           padding: 16px;
           gap: 32px;
           min-height: auto;
         }
+
         .review-card__footer {
           align-self: center;
         }
@@ -751,6 +746,7 @@
         .swiper-button-prev {
           display: none !important;
         }
+
         .eddy-reviewus {
           margin-top: 4px;
         }
@@ -786,6 +782,7 @@
                 </a>
               </div>
             </div>
+            <div class="review-card__empty"></div>
           </div>
         </div>
 
@@ -816,6 +813,7 @@
                 </a>
               </div>
             </div>
+            <div class="review-card__empty"></div>
           </div>
         </div>
 
@@ -847,6 +845,7 @@
                 </a>
               </div>
             </div>
+            <div class="review-card__empty"></div>
           </div>
         </div>
 
@@ -877,6 +876,7 @@
                 </a>
               </div>
             </div>
+            <div class="review-card__empty"></div>
           </div>
         </div>
 
@@ -908,6 +908,7 @@
                 </a>
               </div>
             </div>
+            <div class="review-card__empty"></div>
           </div>
         </div>
       </div>

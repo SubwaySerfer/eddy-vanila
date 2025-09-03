@@ -273,7 +273,11 @@
     line-height: 20px;
   }
 }
-
+@media(min-width: 1250px) {
+  .eddy-home-rental__link {
+    margin-top: -20px;
+  }
+}
 @media (max-width: 768px) {
   .eddy-home-rental {
     padding: 0 0 100px;
