@@ -89,6 +89,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const location = option.getAttribute('data-location');
         selectedLocation = location;
 
+        // Обновляем текст в dropdown'ах
         if (selectedLocationSpan) {
           selectedLocationSpan.textContent = location.toUpperCase();
         }
@@ -96,14 +97,33 @@ document.addEventListener('DOMContentLoaded', function () {
           navbarSelectedLocationSpan.textContent = location.toUpperCase();
         }
 
+        // Закрываем dropdown'ы
         dropdownOpen = false;
         navbarDropdownOpen = false;
         dropdownMenu.classList.remove('open');
         navbarDropdownMenu.classList.remove('open');
 
+        // НОВОЕ: Синхронизируем с картой в контактах
+        updateContactTabLocation(location);
+
+        // Скроллим к футеру
         scrollToFooter();
       });
     });
+    function updateContactTabLocation(location) {
+      // Находим соответствующую вкладку
+      const targetTab = location === 'budva' ? 'budva' : 'skadar';
+
+      // Симулируем клик по нужной вкладке
+      const tabButton = document.querySelector(`[data-tab="${targetTab}"]`);
+      if (tabButton && typeof window.updateActiveTab === 'function') {
+        // Если функция updateActiveTab доступна глобально
+        window.updateActiveTab(targetTab);
+      } else if (tabButton) {
+        // Иначе симулируем клик
+        tabButton.click();
+      }
+    }
 
     // Contacts functionality
     if (contactsLink) {
@@ -129,6 +149,14 @@ document.addEventListener('DOMContentLoaded', function () {
     // Mobile menu
     if (mobileMenuBtn) {
       mobileMenuBtn.addEventListener('click', function () {
+        isMobileMenuOpen = true;
+        mobileOverlay.classList.add('open');
+      });
+    }
+
+    const moreMenuTrigger = document.getElementById('moreMenuTrigger');
+    if (moreMenuTrigger) {
+      moreMenuTrigger.addEventListener('click', function () {
         isMobileMenuOpen = true;
         mobileOverlay.classList.add('open');
       });
@@ -514,6 +542,7 @@ document.addEventListener('DOMContentLoaded', function () {
       updateContactInfo();
       updateMap();
     }
+    window.updateActiveTab = updateActiveTab;
 
     if (budvaTab) {
       budvaTab.addEventListener('click', function () {

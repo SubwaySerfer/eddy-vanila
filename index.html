@@ -475,18 +475,6 @@
       EDDY tours
     </h2>
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        font-family: 'Inter', sans-serif;
-        background: #f5f5f5;
-        padding: 50px 20px;
-      }
-
       /* Reviews Section Styles */
       .eddy-slider {
         max-width: 1200px;
@@ -524,21 +512,44 @@
 
       /* Review Card Styles */
       .review-card {
-        background: white;
-        border-radius: 16px;
-        padding: 32px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        max-width: 800px;
+        max-width: 976px;
         width: 100%;
+        display: flex;
+        gap: 16px;
+        align-items: flex-start;
       }
 
       .review-card__avatar {
         display: flex;
         align-items: center;
+        flex-direction: column;
         gap: 16px;
-        margin-bottom: 24px;
         font-weight: 600;
         font-size: 18px;
+        width: 140px;
+      }
+
+      .review-card__avatar p {
+        color: #000;
+        text-align: center;
+        font-family: Alexandria;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: normal;
+        white-space: nowrap;
+      }
+
+      .review-card__content {
+        max-width: 700px;
+        min-height: 400px;
+        gap: 10px;
+        padding: 35px 50px;
+        display: flex;
+        flex-direction: column;
+        border-radius: 8px;
+        border: 1px solid var(--Text-Fill-Thirty, #888);
+        background: var(--Bg-Primary, #FFF);
       }
 
       .review-card__avatar img {
@@ -549,32 +560,48 @@
       }
 
       .review-card__text {
-        font-size: 16px;
-        line-height: 1.6;
-        color: #333;
-        margin-bottom: 24px;
+        color: #000;
+        font-family: Alexandria;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: 180%;
+        flex: 1;
       }
 
       .review-card__footer {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        flex-direction: column;
+        gap: 4px;
+        align-self: flex-end;
       }
 
       .review-card__stars {
         display: flex;
-        gap: 4px;
+        gap: 2px;
       }
 
       .review-card__stars img {
-        width: 20px;
-        height: 20px;
+        width: 30px;
+        height: 30px;
       }
 
       .review-card__link {
-        color: #007bff;
-        text-decoration: none;
-        font-size: 14px;
+        color: #63666B;
+        font-family: Inter;
+        font-size: 13px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 17.5px;
+        letter-spacing: 1px;
+        text-decoration-line: underline;
+        text-decoration-style: solid;
+        text-decoration-skip-ink: none;
+        text-decoration-thickness: auto;
+        text-underline-offset: 25%;
+        text-underline-position: from-font;
       }
 
       .review-card__link:hover {
@@ -640,7 +667,7 @@
           <div class="review-card">
             <div class="review-card__avatar">
               <img src="/images/reviews/martin.png" alt="Marcin Bitel" />
-              Marcin Bitel
+              <p>Marcin Bitel</p>
             </div>
             <div class="review-card__content">
               <p class="review-card__text">
@@ -670,7 +697,7 @@
           <div class="review-card">
             <div class="review-card__avatar">
               <img src="/images/reviews/joan.svg" alt="Joanna Prince" />
-              Joanna Prince
+              <p>Joanna Prince</p>
             </div>
             <div class="review-card__content">
               <p class="review-card__text">
@@ -699,8 +726,7 @@
         <div class="swiper-slide">
           <div class="review-card">
             <div class="review-card__avatar">
-              <img src="/images/reviews/yang.svg" alt="Canran Yang" />
-              Canran Yang
+              <img src="/images/reviews/yang.svg" alt="Canran Yang" /><p>Canran Yang</p>
             </div>
             <div class="review-card__content">
               <p class="review-card__text">
@@ -730,8 +756,7 @@
         <div class="swiper-slide">
           <div class="review-card">
             <div class="review-card__avatar">
-              <img src="/images/reviews/may.svg" alt="Кateryna" />
-              Кateryna
+              <img src="/images/reviews/may.svg" alt="Кateryna" /><p>Кateryna</p>
             </div>
             <div class="review-card__content">
               <p class="review-card__text">
@@ -760,8 +785,7 @@
         <div class="swiper-slide">
           <div class="review-card">
             <div class="review-card__avatar">
-              <img src="/images/reviews/abby.svg" alt="Abby Park" />
-              Abby Park
+              <img src="/images/reviews/abby.svg" alt="Abby Park" /><p>Abby Park</p>
             </div>
             <div class="review-card__content">
               <p class="review-card__text">

@@ -11,6 +11,9 @@ body {
 a {
   text-decoration: none;
 }
+p {
+  margin: 0;
+}
 
 /* Utilities */
 .eddy-visually-hidden {
@@ -1882,4 +1885,13 @@ a {
 
 .eddy-header.show-desktop .eddy-navbar {
   display: none;
+}
+
+#moreMenuTrigger {
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+#moreMenuTrigger:hover {
+  opacity: 0.8;
 }
