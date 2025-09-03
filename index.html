@@ -418,13 +418,15 @@
       </form>
 
       <p class="eddy-corporate__privacy">
-        By clicking the button, you consent to the <a href="/terms" class="eddy-corporate__privacy-link">personal data</a> and agree to the privacy policy
+        By clicking the button, you consent to the <a href="/terms" class="eddy-corporate__privacy-link">personal
+          data</a> and agree to the privacy policy
       </p>
     </div>
 
     <!-- Mobile Version -->
+    <h2 class="eddy-corporate-mob__title-mob">CORPORATE ADVENTURES</h2>
+
     <div class="eddy-corporate-mob">
-      <h2 class="eddy-corporate-mob__title-mob">CORPORATE ADVENTURES</h2>
       <p class="eddy-corporate-mob__description-mob">
         We can organize the best water adventure for your team: speed and
         endurance races, exploring wild beaches and bays with panoramic
@@ -435,25 +437,27 @@
 
       <form class="eddy-corporate-mob__form-mob" id="corporateFormMob">
         <div class="eddy-custom-input">
-          <label class="eddy-custom-input__label" for="nameMob">Name</label>
-          <input class="eddy-custom-input__field" type="text" id="nameMob" name="name" placeholder="Your name"
+          <label class="eddy-custom-input__label" for="mailMob">Your mail</label>
+          <input class="eddy-custom-input__field" type="email" id="mailMob" name="mail" placeholder="eddy@community.com"
             required />
         </div>
 
         <div class="eddy-custom-input">
-          <label class="eddy-custom-input__label" for="mailMob">Email</label>
-          <input class="eddy-custom-input__field" type="email" id="mailMob" name="mail" placeholder="your@email.com"
+          <label class="eddy-custom-input__label" for="phoneMob">Your telephone</label>
+          <input class="eddy-custom-input__field" type="tel" id="phoneMob" name="phone" placeholder="+38267777777"
             required />
         </div>
 
         <div class="eddy-custom-input">
-          <label class="eddy-custom-input__label" for="phoneMob">Phone</label>
-          <input class="eddy-custom-input__field" type="tel" id="phoneMob" name="phone" placeholder="+1 234 567 8900"
+          <label class="eddy-custom-input__label" for="nameMob">Your name</label>
+          <input class="eddy-custom-input__field" type="text" id="nameMob" name="name" placeholder="Sacha Mambo"
             required />
         </div>
+
+
 
         <button class="eddy-corporate-mob__button-mob" type="submit">
-          Send
+          Send request
         </button>
       </form>
 
@@ -569,6 +573,12 @@
         border-radius: 50%;
         object-fit: cover;
         margin-top: 10px;
+      }
+      @media(max-width: 768px) {
+        .review-card__avatar img {
+          width: 83px;
+          height: 83px;
+        }
       }
 
       .review-card__text {
@@ -744,9 +754,6 @@
           display: none !important;
         }
 
-        .eddy-reviewus {
-          margin-top: 4px;
-        }
       }
     </style>
     <!-- Swiper -->

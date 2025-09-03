@@ -11,7 +11,8 @@ body {
 a {
   text-decoration: none;
 }
-p {
+p,
+ul {
   margin: 0;
 }
 
@@ -685,7 +686,7 @@ p {
   line-height: 44px;
   letter-spacing: 0px;
   text-decoration: none;
-    transition: transform 0.3s ease;
+  transition: transform 0.3s ease;
 }
 .eddy-home-rental-card-item:hover {
   transform: scale(1.055);
@@ -1256,6 +1257,19 @@ p {
   font-weight: 500;
   line-height: 30px;
   letter-spacing: 0.7px;
+  color: #fff;
+}
+@media (max-width: 768px) {
+  .eddy-custom-input__label {
+    color: #fff;
+    text-shadow: -1px 1px 0.6px rgba(0, 0, 0, 0.2);
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 34px; /* 212.5% */
+    margin: 0;
+  }
 }
 
 .eddy-custom-input__field {
@@ -1311,51 +1325,52 @@ p {
   background-size: cover;
   background-attachment: fixed;
   background-blend-mode: normal, normal, color-dodge, normal;
-  padding: 28px 22px 45px;
+  padding: 40px 22px 53px;
   color: #fff;
   text-align: center;
   display: none;
   flex-direction: column;
-  gap: 20px;
+  gap: 40px;
 }
 
 .eddy-corporate-mob__title-mob {
   color: #000;
+  font-weight: 400;
+  margin-bottom: 24px;
   text-align: center;
-  font-family: 'Alexandria', sans-serif;
+  font-family: 'Archivo Black';
   font-size: 36px;
   font-style: normal;
-  font-weight: 400;
   line-height: 100%;
   text-transform: uppercase;
-  margin-bottom: 24px;
-  margin: 0 0 24px 0;
 }
 
 .eddy-corporate-mob__description-mob {
   font-family: 'Alexandria', sans-serif;
-  font-size: 20px;
-  font-weight: 300;
-  line-height: 40px;
-  letter-spacing: 2px;
   text-shadow: 1px 1px 1.8px rgba(0, 0, 0, 0.37);
   padding: 0;
   margin: 0;
+  color: #fff;
+  text-align: center;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 160%; /* 25.6px */
+  letter-spacing: 1.6px;
 }
 
 .eddy-corporate-mob__form-mob {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 8px;
   justify-content: center;
   flex-direction: row;
-  margin-bottom: 20px;
   align-items: end;
 }
 
 .eddy-corporate-mob__button-mob {
   width: 160px;
-  height: 48px;
+  height: 56px;
   background-color: transparent;
   border: 1px solid #fff;
   color: #fff;
@@ -1364,6 +1379,10 @@ p {
   cursor: pointer;
   transition: all 0.3s;
   border-radius: 4px;
+  margin-top: 38px;
+  border-radius: 4px;
+  border: 2px solid var(--color-white-100, #fff);
+  background: rgba(0, 0, 0, 0);
 }
 
 .eddy-corporate-mob__button-mob:hover {
@@ -1382,6 +1401,11 @@ p {
   line-height: 28px;
   font-style: normal;
   letter-spacing: 0.5px;
+}
+@media (max-width: 768px) {
+  .eddy-corporate-mob__privacy-mob {
+    display: none;
+  }
 }
 
 /* Reviews Section Styles */
@@ -2095,6 +2119,12 @@ p {
   position: relative;
   height: 490px;
   box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .eddy-hero__content {
+    margin-bottom: 0;
+  }
 }
 
 /* Mobile Styles */
