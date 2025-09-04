@@ -1755,6 +1755,7 @@ ul {
   font-style: normal;
   font-weight: 400;
   line-height: 30px;
+  text-underline-position: from-font;
 }
 
 .eddy-contact-tabs__email {
@@ -1766,6 +1767,7 @@ ul {
   font-style: normal;
   font-weight: 400;
   line-height: 30px;
+  text-underline-position: from-font;
 }
 
 .eddy-contact-tabs__address p,
@@ -1784,11 +1786,31 @@ ul {
   margin-top: 8px;
 }
 
+.eddy-contact-tabs__address {
+  height: 56px;
+}
+@media(max-width: 768px) {
+  .eddy-contact-tabs__address {
+    height: 80px;
+  }
+}
+@media(min-width: 769px) and (max-width: 1200px) {
+  .eddy-contact-tabs__address {
+    height: auto;
+  }
+}
+
 .eddy-contact-tabs__address strong {
   font-weight: 700;
   text-transform: uppercase;
 }
+.eddy-icon-location {
+  display: none;
+}
 
+.eddy-contact-tabs__tab.active .eddy-icon-location {
+  display: inline-block;
+}
 .eddy-contact-tabs__socials {
   display: flex;
   gap: 10px;
@@ -1916,6 +1938,7 @@ ul {
   text-decoration-skip-ink: auto;
   text-decoration-thickness: auto;
   text-underline-offset: auto;
+  text-underline-position: under;
   transition: color 0.3s ease;
 }
 

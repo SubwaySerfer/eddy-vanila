@@ -144,16 +144,12 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     function updateContactTabLocation(location) {
-      // Находим соответствующую вкладку
       const targetTab = location === 'budva' ? 'budva' : 'skadar';
 
-      // Симулируем клик по нужной вкладке
       const tabButton = document.querySelector(`[data-tab="${targetTab}"]`);
       if (tabButton && typeof window.updateActiveTab === 'function') {
-        // Если функция updateActiveTab доступна глобально
         window.updateActiveTab(targetTab);
       } else if (tabButton) {
-        // Иначе симулируем клик
         tabButton.click();
       }
     }
@@ -555,17 +551,6 @@ document.addEventListener('DOMContentLoaded', function () {
       const selectedTab = document.querySelector(`[data-tab="${newTab}"]`);
       if (selectedTab) {
         selectedTab.classList.add('active');
-      }
-
-      const iconLocation = document.querySelector('.eddy-icon-location');
-      if (iconLocation) {
-        if (newTab === 'budva') {
-          budvaTab.appendChild(iconLocation);
-        } else {
-          if (iconLocation.parentNode) {
-            iconLocation.parentNode.removeChild(iconLocation);
-          }
-        }
       }
 
       activeTab = newTab;
