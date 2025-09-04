@@ -137,11 +137,9 @@ document.addEventListener('DOMContentLoaded', function () {
         dropdownMenu.classList.remove('open');
         navbarDropdownMenu.classList.remove('open');
 
-        // НОВОЕ: Синхронизируем с картой в контактах
         updateContactTabLocation(location);
 
-        // Скроллим к футеру
-        scrollToFooter();
+        scrollToContactsSection();
       });
     });
 
@@ -896,6 +894,20 @@ document.addEventListener('DOMContentLoaded', function () {
     const footer = document.querySelector('footer');
     if (footer) {
       footer.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+  function scrollToContactsSection() {
+    const contactsSection = document.querySelector('.eddy-contact-tabs');
+    if (contactsSection) {
+      const headerHeight = document.getElementById('eddyHeader')?.offsetHeight || 0;
+      const targetPosition = contactsSection.offsetTop - headerHeight - 20; // 20px отступ
+
+      window.scrollTo({
+        top: targetPosition,
+        behavior: 'smooth'
+      });
+    } else {
+      scrollToFooter();
     }
   }
 });

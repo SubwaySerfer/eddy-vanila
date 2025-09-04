@@ -573,13 +573,6 @@ ul {
   background-position: center;
 }
 
-.eddy-card-square:hover {
-  transform: translateY(-5px);
-}
-
-.eddy-card-square:hover .eddy-card-square__go-to {
-  transform: translate(5px, -5px);
-}
 
 /* Background Images */
 .eddy-card-square--tours {
@@ -1284,6 +1277,7 @@ ul {
 .eddy-custom-input__field {
   display: flex;
   width: 300px;
+  font-size: 16px;
   height: 56px;
   padding: 6px 8px 6px 16px;
   flex-direction: column;
@@ -1352,6 +1346,11 @@ ul {
   font-style: normal;
   line-height: 100%;
   text-transform: uppercase;
+}
+@media(min-width: 769px) {
+  .eddy-corporate-mob__title-mob {
+    display: none;
+  }
 }
 
 .eddy-corporate-mob__description-mob {
@@ -1787,6 +1786,7 @@ ul {
 
 .eddy-contact-tabs__address strong {
   font-weight: 700;
+  text-transform: uppercase;
 }
 
 .eddy-contact-tabs__socials {
