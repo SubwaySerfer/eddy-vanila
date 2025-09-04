@@ -72,7 +72,7 @@ ul {
   width: 100%;
   z-index: 100000;
   font-family: 'TharLon';
-  font-synthesis: none; 
+  font-synthesis: none;
   transition: opacity 0.5s ease;
 }
 
@@ -216,10 +216,10 @@ ul {
 }
 
 .eddy-navbar__link:hover {
-  color: #BFBFBF;
+  color: #bfbfbf;
 }
 .eddy-navbar__overlay-menu a:hover {
-  color: #BFBFBF;
+  color: #bfbfbf;
 }
 
 .eddy-navbar__location {
@@ -485,7 +485,7 @@ ul {
   left: 50%;
   bottom: 0;
   transform: translateX(-50%);
-   /*background: linear-gradient(
+  /*background: linear-gradient(
     180deg,
     rgba(255, 255, 255, 0) 14.22%,
     rgba(255, 255, 255, 0.76) 54.8%,
@@ -575,7 +575,6 @@ ul {
   background-size: cover;
   background-position: center;
 }
-
 
 /* Background Images */
 .eddy-card-square--tours {
@@ -875,7 +874,11 @@ ul {
       rgba(140, 80, 24, 0.08) 0%,
       rgba(140, 80, 24, 0.08) 100%
     ),
-    linear-gradient(180deg, rgba(0, 0, 0, 0.55) 47.5%, rgba(0, 0, 0, 0.22) 100%),
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.55) 47.5%,
+      rgba(0, 0, 0, 0.22) 100%
+    ),
     url('../images/tours/sveti-nikola.jpg');
 }
 
@@ -885,7 +888,11 @@ ul {
       rgba(41, 91, 185, 0.12) 0%,
       rgba(41, 91, 185, 0.12) 100%
     ),
-    linear-gradient(180deg, rgba(0, 0, 0, 0.53) 47.5%, rgba(0, 0, 0, 0.21) 100%),
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.53) 47.5%,
+      rgba(0, 0, 0, 0.21) 100%
+    ),
     url('../images/tours/kamenik.jpg');
 }
 
@@ -1350,7 +1357,7 @@ ul {
   line-height: 100%;
   text-transform: uppercase;
 }
-@media(min-width: 769px) {
+@media (min-width: 769px) {
   .eddy-corporate-mob__title-mob {
     display: none;
   }
@@ -1792,12 +1799,12 @@ ul {
 .eddy-contact-tabs__address {
   height: 56px;
 }
-@media(max-width: 768px) {
+@media (max-width: 768px) {
   .eddy-contact-tabs__address {
     height: 80px;
   }
 }
-@media(min-width: 769px) and (max-width: 1200px) {
+@media (min-width: 769px) and (max-width: 1200px) {
   .eddy-contact-tabs__address {
     height: auto;
   }
@@ -1892,7 +1899,9 @@ ul {
   justify-content: center;
   border-radius: 50%;
   background: #1a1a1a;
-  transition: transform 0.3s ease, background-color 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    background-color 0.3s ease;
 }
 
 .eddy-footer__socials a:hover {
@@ -2172,7 +2181,7 @@ ul {
 
   .bodychar {
     width: 100vw;
-    border-radius: 16px 16px 0 0
+    border-radius: 16px 16px 0 0;
   }
 
   .support {
@@ -2208,7 +2217,9 @@ ul {
   z-index: 998;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
 }
 
 .eddy-navbar__backdrop.show {
@@ -2237,7 +2248,9 @@ body.overlay-open {
   z-index: 300;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
   display: none;
 }
 
@@ -2247,14 +2260,12 @@ body.overlay-open {
   display: block;
 }
 
-/* Показываем backdrop только на мобилке */
 @media (max-width: 425px) {
   .chat-widget__backdrop.show {
     display: block;
   }
 }
 
-/* Блокировка скролла когда чат открыт */
 body.chat-open {
   overflow: hidden;
 }

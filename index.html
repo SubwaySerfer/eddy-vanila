@@ -29,6 +29,52 @@
   <!-- Header Start -->
   <header class="eddy-header" id="eddyHeader">
     <!-- Desktop Header Wrapper -->
+    <!-- Mobile/Compact Navbar -->
+    <div class="eddy-navbar" id="mobileNavbar">
+      <div class="eddy-navbar__inner">
+        <a href="/" class="eddy-navbar__logo-link">
+          <img src="./images/icons/logo_def_L.svg" alt="EDDY Logo" class="eddy-navbar__logo" />
+        </a>
+
+        <nav class="eddy-navbar__menu" id="navbarMenu">
+          <a href="/adventures" class="eddy-navbar__link">ADVENTURES</a>
+          <a href="/rentals" class="eddy-navbar__link">RENTALS</a>
+          <a href="/sea-kayaking" class="eddy-navbar__link">SEA KAYAKING</a>
+          <a href="/market" class="eddy-navbar__link">MARKET</a>
+          <a href="/journal" class="eddy-navbar__link">JOURNAL</a>
+          <span class="eddy-navbar__link" id="moreMenuTrigger">MORE</span>
+        </nav>
+
+        <div class="eddy-navbar__location eddy-custom-dropdown">
+          <img src="./images/icons/tabIcon.svg" alt="location" class="eddy-navbar__location-icon" />
+          <div class="eddy-navbar__dropdown-wrapper">
+            <div class="eddy-dropdown-trigger" id="navbarDropdownTrigger" style="
+    height: 28px;">
+              <span id="navbarSelectedLocation">BUDVA</span>
+              <img src="./images/icons/arrow-dwn.svg" alt="arrow down">
+            </div>
+            <div class="eddy-dropdown-menu" id="navbarDropdownMenu">
+              <div class="eddy-dropdown-option" data-location="budva">Budva</div>
+              <div class="eddy-dropdown-option" data-location="skadar">Skadar</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="eddy-navbar__controls">
+          <button class="eddy-navbar__toggle" id="contactsBtn" aria-label="Open contacts">
+            <img src="./images/icons/tabIcon.svg" alt="location" class="eddy-navbar__mobile-contact-icon" />
+          </button>
+
+          <button class="eddy-navbar__toggle" id="mobileMenuBtn" aria-label="Open menu">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect y="2" width="22" height="2" fill="white" />
+              <rect y="10" width="22" height="2" fill="white" />
+              <rect y="18" width="22" height="2" fill="white" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
     <div class="eddy-header__desktop-wrapper" id="desktopHeader">
       <div class="eddy-header__wrapper" id="header__logo-link">
         <a href="/" id="logo" class="eddy-logo-link">
@@ -80,52 +126,7 @@
       </div>
     </div>
 
-    <!-- Mobile/Compact Navbar -->
-    <div class="eddy-navbar" id="mobileNavbar">
-      <div class="eddy-navbar__inner">
-        <a href="/" class="eddy-navbar__logo-link">
-          <img src="./images/icons/logo_def_L.svg" alt="EDDY Logo" class="eddy-navbar__logo" />
-        </a>
 
-        <nav class="eddy-navbar__menu" id="navbarMenu">
-          <a href="/adventures" class="eddy-navbar__link">ADVENTURES</a>
-          <a href="/rentals" class="eddy-navbar__link">RENTALS</a>
-          <a href="/sea-kayaking" class="eddy-navbar__link">SEA KAYAKING</a>
-          <a href="/market" class="eddy-navbar__link">MARKET</a>
-          <a href="/journal" class="eddy-navbar__link">JOURNAL</a>
-          <span class="eddy-navbar__link" id="moreMenuTrigger">MORE</span>
-        </nav>
-
-        <div class="eddy-navbar__location eddy-custom-dropdown">
-          <img src="./images/icons/tabIcon.svg" alt="location" class="eddy-navbar__location-icon" />
-          <div class="eddy-navbar__dropdown-wrapper">
-            <div class="eddy-dropdown-trigger" id="navbarDropdownTrigger" style="
-    height: 28px;">
-              <span id="navbarSelectedLocation">BUDVA</span>
-              <img src="./images/icons/arrow-dwn.svg" alt="arrow down">
-            </div>
-            <div class="eddy-dropdown-menu" id="navbarDropdownMenu">
-              <div class="eddy-dropdown-option" data-location="budva">Budva</div>
-              <div class="eddy-dropdown-option" data-location="skadar">Skadar</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="eddy-navbar__controls">
-          <button class="eddy-navbar__toggle" id="contactsBtn" aria-label="Open contacts">
-            <img src="./images/icons/tabIcon.svg" alt="location" class="eddy-navbar__mobile-contact-icon" />
-          </button>
-
-          <button class="eddy-navbar__toggle" id="mobileMenuBtn" aria-label="Open menu">
-            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect y="2" width="22" height="2" fill="white" />
-              <rect y="10" width="22" height="2" fill="white" />
-              <rect y="18" width="22" height="2" fill="white" />
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
     <div class="eddy-navbar__backdrop" id="navbarBackdrop"></div>
     <!-- Mobile Overlay Menu -->
     <div class="eddy-navbar__overlay" id="mobileOverlay">
