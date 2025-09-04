@@ -726,11 +726,4 @@
   .eddy-footer__nav {
     gap: 20px;
   }
-  .eddy-footer__nav li:nth-child(2) {
-    transform: translateX(25px);
-  }
-  .eddy-footer__nav li:nth-child(3) {
-    transform: translateX(25px);
-  }
-
 }

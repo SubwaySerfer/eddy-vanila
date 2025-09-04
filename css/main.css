@@ -212,10 +212,14 @@ ul {
   text-transform: uppercase;
   text-decoration: none;
   cursor: pointer;
+  transition: color 0.3s ease;
 }
 
 .eddy-navbar__link:hover {
-  text-decoration: underline;
+  color: #BFBFBF;
+}
+.eddy-navbar__overlay-menu a:hover {
+  color: #BFBFBF;
 }
 
 .eddy-navbar__location {
@@ -312,7 +316,6 @@ ul {
   cursor: pointer;
 }
 
-.eddy-navbar__overlay-menu a:hover,
 .eddy-navbar__overlay-menu span:hover {
   text-decoration: underline;
 }
@@ -2255,12 +2258,3 @@ body.overlay-open {
 body.chat-open {
   overflow: hidden;
 }
-@font-face {
-  font-family: 'Tharlon';
-  src: url('./fonts/Tharlon.woff2') format('woff2'),
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
-
