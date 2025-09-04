@@ -63,9 +63,9 @@
                 <div class="eddy-header-location">
                   <img src="./images/icons/tabIcon.svg" alt="location" class="eddy-location-icon" />
                   <div class="eddy-custom-dropdown" id="locationDropdown">
-                    <div class="eddy-dropdown-trigger" id="dropdownTrigger">
+                    <div class="eddy-dropdown-trigger" id="dropdownTrigger" style="height: 28px;">
                       <span class="eddy-location-text" id="selectedLocation">BUDVA</span>
-                      <img src="./images/icons/arrow-dwn.svg" alt="arrow down" class="eddy-dropdown-arrow" />
+                      <img src="./images/icons/arrow-dwn.svg" alt="arrow down" class="eddy-dropdown-arrow">
                     </div>
                     <div class="eddy-dropdown-menu" id="dropdownMenu">
                       <div class="eddy-dropdown-option" data-location="budva">Budva</div>
@@ -99,9 +99,10 @@
         <div class="eddy-navbar__location eddy-custom-dropdown">
           <img src="./images/icons/tabIcon.svg" alt="location" class="eddy-navbar__location-icon" />
           <div class="eddy-navbar__dropdown-wrapper">
-            <div class="eddy-dropdown-trigger" id="navbarDropdownTrigger">
+            <div class="eddy-dropdown-trigger" id="navbarDropdownTrigger" style="
+    height: 28px;">
               <span id="navbarSelectedLocation">BUDVA</span>
-              <img src="./images/icons/arrow-dwn.svg" alt="arrow down" />
+              <img src="./images/icons/arrow-dwn.svg" alt="arrow down">
             </div>
             <div class="eddy-dropdown-menu" id="navbarDropdownMenu">
               <div class="eddy-dropdown-option" data-location="budva">Budva</div>
@@ -125,7 +126,7 @@
         </div>
       </div>
     </div>
-
+    <div class="eddy-navbar__backdrop" id="navbarBackdrop"></div>
     <!-- Mobile Overlay Menu -->
     <div class="eddy-navbar__overlay" id="mobileOverlay">
       <button class="eddy-navbar__close" id="closeOverlay">✕</button>
@@ -136,6 +137,7 @@
         <li><a href="/market">MARKET</a></li>
         <li><a href="/gift-certificates">GIFT CERTIFICATES</a></li>
         <li><a href="/corporate-tours">CORPORATE TOURS</a></li>
+        <li><a href="/corporate-tours">JOURNAL</a></li>
         <li><span id="overlayContactsLink">CONTACTS</span></li>
         <li><a href="/about">ABOUT</a></li>
       </ul>
@@ -155,7 +157,7 @@
   <!-- Hero Section -->
   <section class="eddy-hero">
     <div class="eddy-hero__img">
-      <img src="./images/main/hero.png" alt="Sea kayaking" class="eddy-hero__background-image" />
+      <img src="./images/main/hero.jpg" alt="Sea kayaking" class="eddy-hero__background-image" />
       <img src="./images/main/eddy.svg" alt="Eddy logo" class="eddy-logo-mobile" />
     </div>
   </section>
@@ -574,6 +576,7 @@
         object-fit: cover;
         margin-top: 10px;
       }
+
       @media(max-width: 768px) {
         .review-card__avatar img {
           width: 83px;
@@ -1010,25 +1013,25 @@
           eddyletspaddle@gmail.com
         </a>
         <div class="eddy-contact-tabs__address" id="contactAddress">
-          <p><strong>Rentals</strong> Azzuro Beach, Budva 85310, Montenegro</p>
-          <p><strong>Tours</strong> Slovenska Plaža, Budva 85310, Montenegro</p>
+          <p><strong>RENTALS</strong> Azzuro Beach, Budva 85310, Montenegro</p>
+          <p><strong>TOURS</strong> Slovenska Plaža, Budva 85310, Montenegro</p>
         </div>
         <p class="eddy-contact-tabs__hours" id="contactHours">We operate daily from 8 AM to 8 PM</p>
 
         <div class="eddy-contact-tabs__socials">
           <a href="https://www.facebook.com/share/1ANAhvYso1/?mibextid=wwXIfr" aria-label="Facebook" target="_blank"
             rel="noopener noreferrer">
-            <img src="./images/icons/FB.svg" alt="Facebook" width="24" height="24" />
+            <img src="./images/icons/FB.svg" alt="Facebook" width="20" height="20">
           </a>
           <a href="https://instagram.com/eddy_community" target="_blank" rel="noopener noreferrer"
             aria-label="Instagram">
-            <img src="./images/icons/instagram.svg" alt="Instagram" width="24" height="24" />
+            <img src="./images/icons/instagram-small.svg" alt="Instagram" width="18" height="18">
           </a>
           <a href="https://wa.me/38269719904" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
-            <img src="./images/icons/w-foo.svg" alt="WhatsApp" width="24" height="24" />
+            <img src="./images/icons/w-foo.svg" alt="WhatsApp" width="20" height="20">
           </a>
           <a href="https://t.me/eddy_community" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
-            <img src="./images/icons/telegram.svg" alt="Telegram" width="24" height="24" />
+            <img src="./images/icons/telegram-small.svg" alt="Telegram" width="20" height="20">
           </a>
         </div>
       </div>
@@ -1081,6 +1084,7 @@
       </div>
     </div>
   </footer>
+  <div class="chat-widget__backdrop" id="chatBackdrop"></div>
 
   <!-- Chat Widget Button -->
   <button class="chat-widget__button" id="chatButton" aria-label="Open chat">
@@ -1112,41 +1116,41 @@
   <div class="support" id="chatWidget">
     <div class="headerchar">
       <button class="close-btn" id="closeChat" aria-label="Close chat">
-        <img src="/images/icons/krestik.svg" alt="Close" id="closeIcon" />
+        <img src="./images/icons/krestik.svg" alt="Close" id="closeIcon" />
       </button>
-      <img src="/images/icons/logo_def_L.svg" alt="Eddy Logo" class="logo" />
+      <img src="./images/icons/logo_def_L.svg" alt="Eddy Logo" class="logo" />
       <p class="subtitle">We are here to help you!</p>
     </div>
 
     <div class="bodychar">
       <div class="socials">
         <div class="social-item selected" data-social="0">
-          <img src="/images/icons/w-li.svg" alt="WhatsApp" class="icon" data-default="/images/icons/w-li.svg"
-            data-hover="/images/icons/w-dr.svg" />
+          <img src="./images/icons/w-li.svg" alt="WhatsApp" class="icon" data-default="/images/icons/w-li.svg"
+            data-hover="./images/icons/w-dr.svg" />
           <span>WhatsApp</span>
         </div>
         <div class="social-item" data-social="1">
-          <img src="/images/icons/tg-li.svg" alt="Telegram" class="icon" data-default="/images/icons/tg-li.svg"
-            data-hover="/images/icons/tg-dr.svg" />
+          <img src="./images/icons/tg-li.svg" alt="Telegram" class="icon" data-default="/images/icons/tg-li.svg"
+            data-hover="./images/icons/tg-dr.svg" />
           <span>Telegram</span>
         </div>
         <div class="social-item" data-social="2">
-          <img src="/images/icons/inst-li.svg" alt="Instagram" class="icon" data-default="/images/icons/inst-li.svg"
-            data-hover="/images/icons/inst-dr.svg" />
+          <img src="./images/icons/inst-li.svg" alt="Instagram" class="icon" data-default="/images/icons/inst-li.svg"
+            data-hover="./images/icons/inst-dr.svg" />
           <span>Instagram</span>
         </div>
       </div>
 
       <div class="go-button">
         <a href="https://wa.me/38269719904" target="_blank" rel="noopener noreferrer" id="socialLink">
-          <img src="/images/icons/w-dr.svg" alt="WhatsApp" id="buttonIcon" />
+          <img src="./images/icons/w-dr.svg" alt="WhatsApp" id="buttonIcon" />
           <span id="buttonText">Go to WhatsApp</span>
         </a>
       </div>
 
       <div class="qr-section">
         <p id="qrDescription">Or scan this QR code to contact us on WhatsApp from your phone:</p>
-        <img src="/images/icons/whatsapp-qr.svg" alt="QR Code" class="qr-image" id="qrCode" />
+        <img src="./images/icons/whatsapp-qr.svg" alt="QR Code" class="qr-image" id="qrCode" />
       </div>
     </div>
   </div>

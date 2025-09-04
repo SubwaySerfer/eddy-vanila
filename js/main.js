@@ -36,6 +36,40 @@ document.addEventListener('DOMContentLoaded', function () {
     const logoEl = document.getElementById('logo');
     const menuEl = document.getElementById('mainMenu');
 
+    // Backdrop элемент
+    const navbarBackdrop = document.getElementById('navbarBackdrop');
+
+    // Функции для работы с мобильным оверлеем и backdrop
+    function openMobileOverlay() {
+      isMobileMenuOpen = true;
+
+      // Показываем оверлей и backdrop
+      if (mobileOverlay) {
+        mobileOverlay.classList.add('open');
+      }
+      if (navbarBackdrop) {
+        navbarBackdrop.classList.add('show');
+      }
+
+      // Блокируем скролл страницы
+      document.body.classList.add('overlay-open');
+    }
+
+    function closeMobileOverlay() {
+      isMobileMenuOpen = false;
+
+      // Скрываем оверлей и backdrop
+      if (mobileOverlay) {
+        mobileOverlay.classList.remove('open');
+      }
+      if (navbarBackdrop) {
+        navbarBackdrop.classList.remove('show');
+      }
+
+      // Возвращаем скролл страницы
+      document.body.classList.remove('overlay-open');
+    }
+
     // Header visibility logic
     function updateHeaderVisibility() {
       const scrollY = window.scrollY;
@@ -147,32 +181,31 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     }
 
-    // Mobile menu
+    // Mobile menu - используем новые функции с backdrop
     if (mobileMenuBtn) {
-      mobileMenuBtn.addEventListener('click', function () {
-        isMobileMenuOpen = true;
-        mobileOverlay.classList.add('open');
-      });
+      mobileMenuBtn.addEventListener('click', openMobileOverlay);
     }
 
     const moreMenuTrigger = document.getElementById('moreMenuTrigger');
     if (moreMenuTrigger) {
-      moreMenuTrigger.addEventListener('click', function () {
-        isMobileMenuOpen = true;
-        mobileOverlay.classList.add('open');
-      });
+      moreMenuTrigger.addEventListener('click', openMobileOverlay);
     }
 
     if (closeOverlay) {
-      closeOverlay.addEventListener('click', function () {
-        closeMobileOverlay();
-      });
+      closeOverlay.addEventListener('click', closeMobileOverlay);
     }
 
-    function closeMobileOverlay() {
-      isMobileMenuOpen = false;
-      mobileOverlay.classList.remove('open');
+    // Закрытие при клике на backdrop (затемненную зону)
+    if (navbarBackdrop) {
+      navbarBackdrop.addEventListener('click', closeMobileOverlay);
     }
+
+    // Закрытие по нажатию клавиши Escape
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && isMobileMenuOpen) {
+        closeMobileOverlay();
+      }
+    });
 
     // Click outside to close dropdowns
     document.addEventListener('mousedown', function (e) {
@@ -187,9 +220,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Close overlay on link click
     const overlayLinks = document.querySelectorAll('.eddy-navbar__overlay-menu a');
     overlayLinks.forEach(function (link) {
-      link.addEventListener('click', function () {
-        closeMobileOverlay();
-      });
+      link.addEventListener('click', closeMobileOverlay);
     });
 
     window.addEventListener('scroll', updateHeaderVisibility);
@@ -481,7 +512,7 @@ document.addEventListener('DOMContentLoaded', function () {
       });
 
       const customIcon = L.icon({
-        iconUrl: './images/icons/anchor.png',
+        iconUrl: './images/icons/anchor.svg',
         iconSize: [25, 30],
         iconAnchor: [12, 30],
         popupAnchor: [1, -34]
@@ -606,7 +637,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // Chat Widget functionality
   function initChatWidget() {
     // Social media data
     const socialsData = [
@@ -659,6 +689,59 @@ document.addEventListener('DOMContentLoaded', function () {
     const buttonIcon = document.getElementById('buttonIcon');
     const qrDescription = document.getElementById('qrDescription');
     const qrCode = document.getElementById('qrCode');
+    const chatBackdrop = document.getElementById('chatBackdrop');
+
+    // Open chat widget
+    function openChat() {
+      console.log('openChat called');
+      chatIsOpen = true;
+      chatIsClosing = false;
+
+      if (chatWidget) {
+        chatWidget.classList.add('open');
+        chatWidget.classList.remove('closing');
+        console.log('Chat widget opened');
+      }
+
+      // Показываем backdrop только на мобилке
+      if (window.innerWidth <= 425) {
+        if (chatBackdrop) {
+          chatBackdrop.classList.add('show');
+          console.log('Backdrop shown on mobile');
+        }
+        // Блокируем скролл
+        document.body.classList.add('chat-open');
+      }
+    }
+
+    // Close chat widget
+    function closeChatWidget() {
+      console.log('closeChatWidget called');
+      chatIsClosing = true;
+      chatIsOpen = false;
+
+      if (chatWidget) {
+        chatWidget.classList.add('closing');
+        chatWidget.classList.remove('open');
+        console.log('Chat widget classes updated');
+      }
+
+      // Скрываем backdrop
+      if (chatBackdrop) {
+        chatBackdrop.classList.remove('show');
+        console.log('Backdrop hidden');
+      }
+
+      // Возвращаем скролл
+      document.body.classList.remove('chat-open');
+
+      setTimeout(() => {
+        chatIsClosing = false;
+        if (chatWidget) {
+          chatWidget.classList.remove('closing');
+        }
+      }, 500);
+    }
 
     // Handle mobile detection
     function handleChatResize() {
@@ -666,37 +749,19 @@ document.addEventListener('DOMContentLoaded', function () {
       chatIsMobile = window.innerWidth <= 425;
 
       if (wasMobile !== chatIsMobile) {
-        // Update close icon for mobile
         if (closeIcon) {
           closeIcon.src = chatIsMobile ? './images/icons/closewid.svg' : './images/icons/krestik.svg';
         }
-      }
-    }
 
-    // Open chat widget
-    function openChat() {
-      chatIsOpen = true;
-      if (chatWidget) {
-        chatWidget.classList.add('open');
-        chatWidget.classList.remove('closing');
-      }
-    }
-
-    // Close chat widget
-    function closeChatWidget() {
-      chatIsClosing = true;
-      if (chatWidget) {
-        chatWidget.classList.add('closing');
-        chatWidget.classList.remove('open');
-      }
-
-      setTimeout(() => {
-        chatIsOpen = false;
-        chatIsClosing = false;
-        if (chatWidget) {
-          chatWidget.classList.remove('closing');
+        if (!chatIsMobile && chatIsOpen && chatBackdrop) {
+          chatBackdrop.classList.remove('show');
+          document.body.classList.remove('chat-open');
         }
-      }, 500);
+        else if (chatIsMobile && chatIsOpen && chatBackdrop) {
+          chatBackdrop.classList.add('show');
+          document.body.classList.add('chat-open');
+        }
+      }
     }
 
     // Update selected social media
@@ -749,16 +814,52 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
 
-    // Event listeners
     if (chatButton) {
-      chatButton.addEventListener('click', openChat);
+      chatButton.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation(); // ВАЖНО: предотвращаем всплытие
+
+        if (chatIsOpen) {
+          closeChatWidget();
+        } else {
+          openChat();
+        }
+      });
     }
 
+    // Event listener для закрытия чата
     if (closeChatBtn) {
-      closeChatBtn.addEventListener('click', closeChatWidget);
+
+      closeChatBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        closeChatWidget();
+      });
     }
 
-    window.addEventListener('resize', handleChatResize);
+    // Закрытие при клике на backdrop
+    if (chatBackdrop) {
+      chatBackdrop.addEventListener('click', function (e) {
+        closeChatWidget();
+      });
+    }
+
+    // Закрытие по Escape
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && chatIsOpen) {
+        closeChatWidget();
+      }
+    });
+
+    // Закрытие при клике вне виджета (с задержкой чтобы не конфликтовать с кнопкой открытия)
+    document.addEventListener('click', function (e) {
+      // Используем setTimeout чтобы дать время обработаться клику по кнопке
+      setTimeout(() => {
+        if (chatIsOpen && chatWidget && !chatWidget.contains(e.target) && e.target !== chatButton) {
+          closeChatWidget();
+        }
+      }, 10);
+    });
 
     // Social items event listeners
     socialItems.forEach((item, index) => {
@@ -776,9 +877,18 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
 
+    // Window resize listener
+    window.addEventListener('resize', handleChatResize);
+
     // Initialize
     handleChatResize();
     updateSelectedSocial(0);
+
+
+    if (closeIcon) {
+      closeIcon.src = chatIsMobile ? './images/icons/closewid.svg' : './images/icons/krestik.svg';
+      console.log('Initial close icon set for mobile:', chatIsMobile);
+    }
   }
 
   // Utility function to scroll to footer

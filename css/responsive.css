@@ -86,7 +86,7 @@
   }
   .eddy-navbar {
     display: flex;
-    padding: 0 30px;
+    padding: 0 0px;
     height: 50px;
   }
   .eddy-navbar__inner {
@@ -106,8 +106,11 @@
   } */
   .eddy-navbar__overlay {
     max-width: 100vw;
-    padding: 24px 16px;
+    padding: 20px 16px 30px 40px;
   }
+   .eddy-navbar__overlay-menu {
+      margin: -2px 0;
+   }
 }
 
 @media (max-width: 390px) {

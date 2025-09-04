@@ -71,7 +71,8 @@ ul {
   left: 0;
   width: 100%;
   z-index: 100000;
-  font-family: 'Inter', sans-serif;
+  font-family: 'TharLon';
+  font-synthesis: none; 
   transition: opacity 0.5s ease;
 }
 
@@ -119,6 +120,7 @@ ul {
   font-size: 20px;
   flex-direction: column;
   width: 88px;
+  height: 54px;
   padding-left: 28px;
 }
 
@@ -130,6 +132,7 @@ ul {
 .eddy-main-nav {
   display: flex;
   width: 100%;
+  height: 56px;
   justify-content: space-around;
 }
 
@@ -196,14 +199,16 @@ ul {
 .eddy-navbar__menu {
   display: flex;
   align-items: flex-end;
-  gap: 24px;
+  gap: 20px;
   padding-left: 49px;
   flex: 1;
+  margin-bottom: -6px;
 }
 
 .eddy-navbar__link {
   color: #fff;
-  font-size: 14px;
+  font-size: 16px;
+  letter-spacing: 0.64px;
   text-transform: uppercase;
   text-decoration: none;
   cursor: pointer;
@@ -218,7 +223,7 @@ ul {
   display: flex;
   align-items: center;
   gap: 4px;
-  font-size: 14px;
+  font-size: 16px;
   flex-direction: column;
   width: 5.5rem;
 }
@@ -266,7 +271,7 @@ ul {
     ),
     #1a1a1a;
   color: #fff;
-  padding: 40px 20px 60px;
+  padding: 20px 16px 60px 40px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -285,17 +290,18 @@ ul {
   font-size: 28px;
   align-self: flex-end;
   cursor: pointer;
+  margin-top: -6px;
 }
 
 .eddy-navbar__overlay-menu {
   list-style: none;
   padding: 0;
-  margin: 60px 0;
+  margin: -7px 0;
   flex-grow: 1;
 }
 
 .eddy-navbar__overlay-menu li {
-  margin-bottom: 8px;
+  margin-bottom: 14.5px;
 }
 
 .eddy-navbar__overlay-menu a,
@@ -339,6 +345,7 @@ ul {
   font-size: 14px;
   flex-direction: column;
   width: auto;
+  margin-bottom: 20px;
 }
 
 .eddy-dropdown-trigger {
@@ -349,7 +356,7 @@ ul {
   font-size: 16px;
   font-weight: 400;
   line-height: 140%;
-  letter-spacing: 0.64px;
+  letter-spacing: 0.8px;
   text-transform: uppercase;
 }
 
@@ -358,15 +365,15 @@ ul {
 }
 
 .eddy-dropdown-arrow {
-  margin-left: 4.5px;
+  margin-left: 4px;
   height: 10px;
   width: 10px;
 }
 
 .eddy-dropdown-trigger img {
   margin-left: 4px;
-  width: 7.8px;
-  height: 9.1px;
+  width: 10px;
+  height: 10px;
   flex-shrink: 0;
 }
 
@@ -475,12 +482,12 @@ ul {
   left: 50%;
   bottom: 0;
   transform: translateX(-50%);
-  background: linear-gradient(
+   /*background: linear-gradient(
     180deg,
     rgba(255, 255, 255, 0) 14.22%,
     rgba(255, 255, 255, 0.76) 54.8%,
     #fff 91.49%
-  );
+  );*/
 }
 
 .eddy-hero__link {
@@ -576,15 +583,17 @@ ul {
 
 /* Background Images */
 .eddy-card-square--tours {
-  background-image: url('/images/main/tours@2x.jpg') !important;
+  background-image: url('../images/main/tours@2x.jpg') !important;
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
 }
 
 .eddy-card-square--market {
-  background-image: url('/images/main/market@2x.png') !important;
+  background-image: url('../images/main/market@2x.jpg') !important;
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
 }
 
 /* Card Inner Content */
@@ -856,7 +865,7 @@ ul {
   text-align: center;
   font-family: 'Alexandria', 'Arial', sans-serif;
   font-size: 18px;
-  font-weight: 300;
+  font-weight: 200;
   line-height: normal;
   margin: 0;
   padding: 0;
@@ -871,7 +880,7 @@ ul {
       rgba(140, 80, 24, 0.08) 100%
     ),
     linear-gradient(180deg, rgba(0, 0, 0, 0.55) 47.5%, rgba(0, 0, 0, 0.22) 100%),
-    url('/images/tours/sveti-nikola.jpg');
+    url('../images/tours/sveti-nikola.jpg');
 }
 
 .eddy-tour-card-kamenik {
@@ -881,7 +890,7 @@ ul {
       rgba(41, 91, 185, 0.12) 100%
     ),
     linear-gradient(180deg, rgba(0, 0, 0, 0.53) 47.5%, rgba(0, 0, 0, 0.21) 100%),
-    url('/images/tours/kamenik.jpg');
+    url('../images/tours/kamenik.jpg');
 }
 
 .eddy-tour-card-moraca {
@@ -891,7 +900,7 @@ ul {
       rgba(151, 73, 27, 0.05) 100%
     ),
     linear-gradient(180deg, rgba(0, 0, 0, 0.58) 56%, rgba(0, 0, 0, 0.23) 100%),
-    url('/images/tours/moraca.jpg');
+    url('../images/tours/moraca.jpg');
 }
 
 .eddy-tour-card-caves {
@@ -901,7 +910,7 @@ ul {
       rgba(140, 80, 24, 0.07) 100%
     ),
     linear-gradient(180deg, rgba(0, 0, 0, 0.5) 47.5%, rgba(0, 0, 0, 0.2) 100%),
-    url('/images/tours/caves.jpg');
+    url('../images/tours/caves.jpg');
 }
 
 /* Button styles */
@@ -1135,7 +1144,7 @@ ul {
       rgba(141, 141, 141, 0.39) 0%,
       rgba(141, 141, 141, 0.39) 100%
     ),
-    url('/images/corporate/corp-1.jpg');
+    url('../images/corporate/corp-1.jpg');
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -1615,6 +1624,7 @@ ul {
 .eddy-google {
   width: 60px;
   height: 19px;
+  margin-bottom: -6px;
 }
 
 .eddy-reviewtrip {
@@ -1939,15 +1949,15 @@ ul {
 /* Chat Widget Styles */
 .chat-widget__button {
   position: fixed;
-  bottom: 20px;
-  right: 30px;
+  bottom: 28px;
+  right: 28px;
   border: none;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  z-index: 1000000;
+  z-index: 1000;
   background: none;
 }
 
@@ -1961,22 +1971,22 @@ ul {
   font-family: Inter, sans-serif;
   font-style: normal;
   font-weight: 400;
-  z-index: 1000000;
+  z-index: 1001;
   transition: all 0.5s ease;
   opacity: 0;
-  transform: translateY(100%);
+  transform: translateX(100%);
 }
 
 .support.open {
   visibility: visible;
   opacity: 1;
-  transform: translateY(0);
+  transform: translateX(0);
 }
 
 .support.closing {
   visibility: visible;
   opacity: 0;
-  transform: translateY(100%);
+  transform: translateX(100%);
 }
 
 .headerchar {
@@ -2096,8 +2106,8 @@ ul {
   width: 208px;
 }
 .chat-widget__button svg {
-  width: 60px;
-  height: 60px;
+  width: 72px;
+  height: 72px;
 }
 .qr-image {
   width: 140px;
@@ -2136,7 +2146,7 @@ ul {
 
   .bodychar {
     width: 100vw;
-    border-radius: 0;
+    border-radius: 16px 16px 0 0
   }
 
   .support {
@@ -2146,8 +2156,8 @@ ul {
   }
 
   .chat-widget__button {
-    bottom: 20px;
-    right: 20px;
+    bottom: 25px;
+    right: 25px;
   }
 }
 
@@ -2161,3 +2171,73 @@ ul {
     display: none;
   }
 }
+/* Затемняющая пленка для мобильного оверлея */
+.eddy-navbar__backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 998;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.eddy-navbar__backdrop.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Убеждаемся что оверлей имеет правильный z-index */
+.eddy-navbar__overlay {
+  z-index: 999;
+}
+
+/* Предотвращаем скролл страницы когда оверлей открыт */
+body.overlay-open {
+  overflow: hidden;
+}
+
+/* Chat Widget Backdrop */
+.chat-widget__backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 300;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  display: none;
+}
+
+.chat-widget__backdrop.show {
+  opacity: 1;
+  visibility: visible;
+  display: block;
+}
+
+/* Показываем backdrop только на мобилке */
+@media (max-width: 425px) {
+  .chat-widget__backdrop.show {
+    display: block;
+  }
+}
+
+/* Блокировка скролла когда чат открыт */
+body.chat-open {
+  overflow: hidden;
+}
+@font-face {
+  font-family: 'Tharlon';
+  src: url('./fonts/Tharlon.woff2') format('woff2'),
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+
