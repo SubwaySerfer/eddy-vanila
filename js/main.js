@@ -676,21 +676,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Open chat widget
     function openChat() {
-      console.log('openChat called');
       chatIsOpen = true;
       chatIsClosing = false;
 
       if (chatWidget) {
         chatWidget.classList.add('open');
         chatWidget.classList.remove('closing');
-        console.log('Chat widget opened');
       }
 
       // Показываем backdrop только на мобилке
       if (window.innerWidth <= 425) {
         if (chatBackdrop) {
           chatBackdrop.classList.add('show');
-          console.log('Backdrop shown on mobile');
         }
         // Блокируем скролл
         document.body.classList.add('chat-open');
@@ -699,20 +696,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Close chat widget
     function closeChatWidget() {
-      console.log('closeChatWidget called');
       chatIsClosing = true;
       chatIsOpen = false;
 
       if (chatWidget) {
         chatWidget.classList.add('closing');
         chatWidget.classList.remove('open');
-        console.log('Chat widget classes updated');
       }
 
       // Скрываем backdrop
       if (chatBackdrop) {
         chatBackdrop.classList.remove('show');
-        console.log('Backdrop hidden');
       }
 
       // Возвращаем скролл
@@ -870,7 +864,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (closeIcon) {
       closeIcon.src = chatIsMobile ? './images/icons/closewid.svg' : './images/icons/krestik.svg';
-      console.log('Initial close icon set for mobile:', chatIsMobile);
     }
   }
 
@@ -884,11 +877,13 @@ document.addEventListener('DOMContentLoaded', function () {
   function scrollToContactsSection() {
     const contactsSection = document.querySelector('.eddy-contact-tabs');
     if (contactsSection) {
-      const headerHeight = document.getElementById('eddyHeader')?.offsetHeight || 0;
-      const targetPosition = contactsSection.offsetTop - headerHeight - 20; // 20px отступ
+      const navbarHeight = 100;
+      const additionalOffset = 20;
+
+      const targetPosition = contactsSection.offsetTop - navbarHeight - additionalOffset;
 
       window.scrollTo({
-        top: targetPosition,
+        top: Math.max(0, targetPosition),
         behavior: 'smooth'
       });
     } else {
